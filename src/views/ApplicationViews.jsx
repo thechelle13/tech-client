@@ -4,11 +4,11 @@ import { Register } from "../components/auth/Register";
 import { Authorized } from "./Authorized";
 import { Home } from "../pages/Home";
 
-// import { PostList } from "../pages/PostList";
+import { PostList } from "../pages/PostList";
 // import { SkillList } from "../pages/SkillList";
 // ;
 // import { PostDetail } from "../pages/PostDetail";
-// import { MyPosts } from "../pages/MyPosts";
+import { MyPosts } from "../pages/MyPosts";
 // import { SkillForm } from "../components/forms/SkillForm";
 // import { PostForm } from "../components/forms/PostForm";
 
@@ -24,38 +24,38 @@ export const ApplicationViews = ({ token, setToken }) => {
           {/* Add Routes here */}
           <Route path="/" element={<Home setToken={setToken} />} />
           
-          {/* <Route
+          <Route
             path="/postLists"
             element={<PostList token={token} setToken={setToken} />}
           />
-          <Route
+          {/* <Route
             path="/postLists/:postId"
             element={<PostDetail token={token} setToken={setToken} />}
-          />
+          /> */}
           
-          <Route
+          {/* <Route
             path="/postList/:postId/edit-post"
             element={<EditPostForm token={token} setToken={setToken} />}
-          />
+          /> */}
           
-          <Route
+          {/* <Route
             path="/create-post"
             element={<PostForm token={token} setToken={setToken} />}
-          />
+          /> */}
           <Route
             path="/myPosts"
             element={<MyPosts token={token} setToken={setToken} />}
           />
-          <Route
+          {/* <Route
             path="/skills"
             element={<SkillList token={token} setToken={setToken} />}
-          />
+          /> */}
           
-          <Route
+          {/* <Route
             path="/create-skill"
             element={<SkillForm token={token} setToken={setToken} />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/edit-skill/:skillId"
             element={<EditSkillForm token={token} setToken={setToken} />}
           /> */}
