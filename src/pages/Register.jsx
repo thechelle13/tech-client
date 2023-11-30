@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
 
-export const Register = () => {
+export const Register = ({setToken}) => {
     const [email, setEmail] = useState("admina@straytor.com")
     const [password, setPassword] = useState("straytor")
     const [firstName, setFirstName] = useState("Admina")
