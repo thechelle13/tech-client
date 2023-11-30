@@ -7,12 +7,12 @@ import { Home } from "../pages/Home";
 import { PostList } from "../pages/PostList";
 import { SkillList } from "../pages/SkillList";
 
-// import { PostDetail } from "../pages/PostDetail";
+import { PostDetail } from "../pages/PostDetail";
 import { MyPosts } from "../pages/MyPosts";
 import { SkillForm } from "../components/forms/SkillForm";
-// import { PostForm } from "../components/forms/PostForm";
+import { PostForm } from "../components/forms/PostForm";
 import { EditSkillForm } from "../components/forms/EditSkillForm";
-// import { EditPostForm } from "../components/forms/EditPostForm";
+import { EditPostForm } from "../components/forms/EditPostForm";
 
 export const ApplicationViews = ({ token, setToken }) => {
   return (
@@ -28,20 +28,20 @@ export const ApplicationViews = ({ token, setToken }) => {
             path="/postLists"
             element={<PostList token={token} setToken={setToken} />}
           />
-          {/* <Route
+          <Route
             path="/postLists/:postId"
             element={<PostDetail token={token} setToken={setToken} />}
-          /> */}
+          />
           
-          {/* <Route
+          <Route
             path="/postList/:postId/edit-post"
             element={<EditPostForm token={token} setToken={setToken} />}
-          /> */}
+          />
           
-          {/* <Route
+          <Route
             path="/create-post"
             element={<PostForm token={token} setToken={setToken} />}
-          /> */}
+          />
           <Route
             path="/myPosts"
             element={<MyPosts token={token} setToken={setToken} />}

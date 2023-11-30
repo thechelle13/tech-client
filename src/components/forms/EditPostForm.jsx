@@ -58,7 +58,7 @@ export const EditPostForm = () => {
         <div className="h1-div">
           <h1>Edit Post Form</h1>
         </div>
-        {/* <div className="form-container">
+        <div className="form-container">
           <fieldset className="form-fieldset">
             <div className="form-field">
               <label>Title:</label>
@@ -72,7 +72,7 @@ export const EditPostForm = () => {
                 required
               />
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label>Image:</label>
               <input
                 className="input-field"
@@ -85,7 +85,7 @@ export const EditPostForm = () => {
                 maxLength={200}
               />
               Max Characters 200
-            </div>
+            </div> */}
             <div className="form-field">
               <label>Content:</label>
               <textarea
@@ -97,26 +97,7 @@ export const EditPostForm = () => {
                 required
               />
             </div>
-            <fieldset className="fieldset-div">
-              <div className="box-input">
-                <div>Category:</div>
-                <select
-                  className="input"
-                  name="category"
-                  onChange={updateCategory}
-                  value={post.category.id}
-                >
-               
-                  {categoryLabel.map((typeObj) => {
-                    return (
-                      <option key={typeObj.id} value={typeObj.id}>
-                        {typeObj.label}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-            </fieldset>
+           
           </fieldset>
         </div>
         <div className="button-div">
@@ -124,7 +105,7 @@ export const EditPostForm = () => {
           <button className="cancel-button" onClick={handleCancel}>
             Cancel
           </button>
-        </div> */}
+        </div>
       </form>
     </main>
   );

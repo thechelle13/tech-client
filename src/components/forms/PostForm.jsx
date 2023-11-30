@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./forms.css";
+import { getSkills } from "../../services/skillServices";
 
 export const PostForm = ({token, setToken}) => {
     const [skillLabels, setSkillLabels] = useState([]);
@@ -11,6 +12,8 @@ export const PostForm = ({token, setToken}) => {
         publication_date: new Date(),
         approved: true,
       });
+
+      let navigate = useNavigate();
 
       useEffect(() => {
         getSkills().then((skillArray) => {
@@ -30,6 +33,44 @@ export const PostForm = ({token, setToken}) => {
         updateChosen(copy);
       };
     
+      const postPost = async (evt) => {
+        evt.preventDefault();
+    
+        // Retrieve the token from localStorage
+        const authToken = localStorage.getItem("auth_token");
+    
+        // Check if the token is present
+        if (!authToken) {
+          console.error("Rock token not found in localStorage");
+          return;
+        }
+    
+        try {
+          // Send a POST request to create a new post
+          const response = await fetch("http://localhost:8000/posts", {
+            method: "POST",
+            headers: {
+              Authorization: `Token ${localStorage.getItem("auth_token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...post, skills: Array.from(chosenSkills) }),
+          });
+    
+          if (!response.ok) {
+            console.error("Error posting post:", response.statusText);
+            return;
+          }
+    
+          // Parse the response to get the newly created post's ID
+          const createdPost = await response.json();
+          const postId = createdPost.id;
+    
+          // Navigate to the detail page of the created post
+          navigate(`/postLists/${postId}`);
+        } catch (error) {
+          console.error("Error posting post:", error);
+        }
+      };
 
     return  (
     <main className="form-parent">
