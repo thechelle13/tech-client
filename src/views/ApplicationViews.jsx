@@ -5,13 +5,13 @@ import { Authorized } from "./Authorized";
 import { Home } from "../pages/Home";
 
 import { PostList } from "../pages/PostList";
-// import { SkillList } from "../pages/SkillList";
-// ;
+import { SkillList } from "../pages/SkillList";
+
 // import { PostDetail } from "../pages/PostDetail";
 import { MyPosts } from "../pages/MyPosts";
-// import { SkillForm } from "../components/forms/SkillForm";
+import { SkillForm } from "../components/forms/SkillForm";
 // import { PostForm } from "../components/forms/PostForm";
-
+import { EditSkillForm } from "../components/forms/EditSkillForm";
 // import { EditPostForm } from "../components/forms/EditPostForm";
 
 export const ApplicationViews = ({ token, setToken }) => {
@@ -46,19 +46,19 @@ export const ApplicationViews = ({ token, setToken }) => {
             path="/myPosts"
             element={<MyPosts token={token} setToken={setToken} />}
           />
-          {/* <Route
+          <Route
             path="/skills"
             element={<SkillList token={token} setToken={setToken} />}
-          /> */}
+          />
           
-          {/* <Route
+          <Route
             path="/create-skill"
             element={<SkillForm token={token} setToken={setToken} />}
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/edit-skill/:skillId"
             element={<EditSkillForm token={token} setToken={setToken} />}
-          /> */}
+          />
         </Route>
       </Routes>
     </>

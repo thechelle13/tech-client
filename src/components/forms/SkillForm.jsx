@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./forms.css";
+import { createSkill } from "../../services/skillServices";
 
 export const SkillForm = () => {
     const [skill, setSkill] = useState({
