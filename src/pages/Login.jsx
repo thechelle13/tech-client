@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
 
 export const Login = () => {
-    const [email, setEmail] = useState("steve@brownlee.com")
-    const [password, setPassword] = useState("brownlee")
+    const [email, setEmail] = useState("michelle@email.com")
+    const [password, setPassword] = useState("totherow")
     const existDialog = useRef()
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:8000/login`, {
+        fetch(`http://localhost:3000/login`, {
             method: "POST",
             body: JSON.stringify({ email, password }),
             headers: {
