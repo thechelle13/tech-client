@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Login } from "../pages/Login";
-import { Register } from "../pages/Register";
+import { Login } from "../components/auth/Login";
+import { Register } from "../components/auth/Register";
 import { Authorized } from "./Authorized";
 import { Home } from "../pages/Home";
 
@@ -16,7 +16,7 @@ import { Home } from "../pages/Home";
 
 export const ApplicationViews = ({ token, setToken }) => {
   return (
-    <BrowserRouter> 
+    <> 
       <Routes>
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
@@ -61,6 +61,6 @@ export const ApplicationViews = ({ token, setToken }) => {
           /> */}
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
