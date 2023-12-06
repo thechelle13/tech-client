@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "./pages.css";
 import { getAllPosts, deletePost } from "../services/postServices";
+import { useNavigate } from "react-router-dom";
 
 export const MyPosts = ({ setToken, token }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [postToDelete, setPostToDelete] = useState(null);
+  const navigate = useNavigate();
 
   const getAndSetMyPosts = async () => {
     try {
@@ -19,6 +21,9 @@ export const MyPosts = ({ setToken, token }) => {
     }
   };
 
+  // const handleEditClick = (post) => {
+
+  // }
   const handleDeleteClick = (post) => {
     setPostToDelete(post);
   };
@@ -68,7 +73,7 @@ export const MyPosts = ({ setToken, token }) => {
                 </div>
               </div>
               <div className="card-body">
-                <img className="post-image" src={post.title} alt={post.title} width="400px" />
+                <div className="post-title" src={post.title} alt={post.title} />
                 <div>{post.content}</div>
               </div>
 
@@ -85,9 +90,23 @@ export const MyPosts = ({ setToken, token }) => {
                 </h4>
 
                 <h4 className="post-reactions">
-                  Area: {post.areas.length}{post.area.label}
+                  Area:
+                   {/* {post.areas.length}
+                   {post.area.label} */}
                 </h4>
-                
+                {post?.is_owner ? (
+                      <div className="manage-skills-div">
+                        <button
+                          onClick={() =>
+                            navigate(`/postList/${post.id}/edit-post`)
+                          }
+                        >
+                          Edit
+                        </button>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                 <div className="comment-buttons">
                   <button
                     className="delete-button"

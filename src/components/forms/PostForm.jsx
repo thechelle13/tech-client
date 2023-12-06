@@ -6,9 +6,9 @@ import { getAreas } from "../../services/areaServices";
 
 export const PostForm = ({token, setToken}) => {
     const [areaLabels, setAreaLabels] = useState([]);
-
+    const [chosenArea, updateChosenArea] = useState(new Set());
     const [skillLabels, setSkillLabels] = useState([]);
-    const [chosenSkills, updateChosen] = useState(new Set());
+    const [chosenSkills, updateChosenSkills] = useState(new Set());
     const [post, setPost] = useState({
         title: "",
         content: "",
@@ -37,18 +37,27 @@ export const PostForm = ({token, setToken}) => {
         setPost(copy);
       };
 
-      const updateArea = (e) => {
-        const copy = { ...post };
-        copy.area = e.target.value;
-        setPost(copy);
-      };
+      // const updateArea = (e) => {
+      //   const copy = { ...post };
+      //   copy.area = e.target.value;
+      //   setPost(copy);
+      // };
 
       const handleSkillChosen = (s) => {
         const copy = new Set(chosenSkills);
         copy.has(s.id) ? copy.delete(s.id) : copy.add(s.id);
-        updateChosen(copy);
+        updateChosenSkills(copy);
+      };
+
+//debugger
+      const handleAreaChosen = (a) => {
+        const copy = new Set(chosenArea);
+        copy.has(a.id) ? copy.delete(a.id) : copy.add(a.id);
+        updateChosenArea(copy);
       };
     
+
+//debugger
       const postPost = async (evt) => {
         evt.preventDefault();
     
@@ -70,7 +79,7 @@ export const PostForm = ({token, setToken}) => {
               Authorization: `Token ${localStorage.getItem("auth_token")}`,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ ...post, skills: Array.from(chosenSkills) }),
+            body: JSON.stringify({ ...post, skills: Array.from(chosenSkills)}),
           });
     
           if (!response.ok) {
@@ -99,15 +108,7 @@ export const PostForm = ({token, setToken}) => {
         <fieldset className="form-fieldset">
           <div className="form-field">
             <label>New Post:</label>
-            <input
-              className="input-field"
-              id="title"
-              onChange={updatePost}
-              type="text"
-              placeholder=""
-              value={post.title}
-              required
-            />
+            
           </div>
           <div className="form-field">
             <label>Title:</label>
@@ -115,7 +116,7 @@ export const PostForm = ({token, setToken}) => {
               className="textarea-field"
               id="title"
               onChange={updatePost}
-              placeholder=""
+              placeholder="text here"
               value={post.title}
               required
               maxLength={20}
@@ -128,7 +129,7 @@ export const PostForm = ({token, setToken}) => {
               className="textarea-field"
               id="content"
               onChange={updatePost}
-              placeholder=""
+              placeholder="text here"
               value={post.content}
               required
               maxLength={200}
@@ -157,43 +158,17 @@ export const PostForm = ({token, setToken}) => {
             </div>
           </fieldset>
 
-          {/* <fieldset>
-          <div htmlFor="area"> Area:</div>
-          <select
-            name="area"
-            value={editArea.areaId}
-            onChange={(event) => {
-              const { value } = event.target;
-              setEditArea((prevEditArea) => ({
-                ...prevEditArea,
-                areaId: value,
-              }));
-            }}
-            required
-            autoFocus
-            autoComplete="off" 
-          >
-            <option value="petType">Please select an Area or field:</option>
-            {area.map((areaObj) => {
-              return (
-                <option key={areaObj.id} value={areaObj.id}>
-                  {areaObj.label}
-                </option>
-              );
-            })}
-          </select>
-        </fieldset> */}
-
             <fieldset className="fieldset-div">
               <div className="box-input">
                 <div>Area:</div>
                 <select
                   className="input"
                   name="area"
-                  onChange={updateArea}
+                  onChange={() => handleAreaChosen(areaLabels)}
                   value={post.area}
                 >
                   <option value={0}>Please select an Area</option>
+                
                   {areaLabels.map((areaObj) => {
                     return (
                       <option key={areaObj.id} value={areaObj.id}>

@@ -53,9 +53,9 @@ export const NavBar = ({ token, setToken }) => {
               <Link to="/skills" className="navbar-item">
                 Skill Manager
               </Link>
-              <Link to="/skills" className="navbar-item">
+              {/* <Link to="/skills" className="navbar-item">
                 Logout
-              </Link>
+              </Link> */}
 
             </>
           ) : (
