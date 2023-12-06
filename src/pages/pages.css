@@ -67,7 +67,7 @@
     border: none;
   }
   
-  .card-tags{
+  .card-skills{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -76,12 +76,12 @@
     width: 30%;
   }
   
-  .card-tag-header {
+  .card-skill-header {
     margin: 10px 0px;
     padding-left: 0px
   }
   
-  .card-tag {
+  .card-skill {
     margin: 0px 5px 0px 0px;
     padding: 0px;
   }
@@ -91,7 +91,7 @@
     font-size: 20px;
   }
   
-  .tags {
+  .skills {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -110,7 +110,7 @@
     font-weight: bold;
   }
   
-  .tag-container {
+  .skill-container {
     display: flex;
     width: 1000px;
     justify-content: space-around;
@@ -159,7 +159,7 @@
     font-weight: bold;
   }
   
-  .tag-div{
+  .skill-div{
     display: flex;
     flex-wrap: wrap;
     max-width: 300px;
@@ -167,7 +167,7 @@
     justify-content: center;
   }
   
-  .tag-label {
+  .skill-label {
     margin: 0px 10px;
     background-color: rgba(128, 128, 128, 0.279);
     margin: 5px;
@@ -183,13 +183,13 @@
     font-weight: lighter;
   }
   
-  .manage-tags {
+  .manage-skills {
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 30px;
   }
   
-  .manage-tags-div {
+  .manage-skills-div {
     display: flex;
     justify-content: flex-end;
     padding: 10px;

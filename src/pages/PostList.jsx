@@ -36,17 +36,17 @@ export const PostList = ({ setToken, token }) => {
             <div className="card-item" key={post.id}>
               <Link to={`/postLists/${post.id}`}>
                 <div className="post-details">
-                  <div className="post-header">
-                    <div className="post-title">Title: {post.title}</div>
-                    <div className="post-date">
-                      Date: {post.publication_date}
-                    </div>
+                    <div className="post-header">
+                        <div className="post-title">Title: {post.title}</div>
+                          <div className="post-date">
+                          Date: {post.publication_date}
+                          </div>
                     <div className="post-author">
                       Author: {post.tech_user.user.username}
                     </div>
                   </div>
+                  
                   <div className="post-footer">
-                   
                     <div className="post-skill-container">
                       <div>Skills: </div>
                       <div className="skill-div">
@@ -57,11 +57,25 @@ export const PostList = ({ setToken, token }) => {
                         ))}
                       </div>
                     </div>
+
+                    
+
                   </div>
+
+                  
                 </div>
+
+                <div className="post-footer">
+                    <div className="post-skill-container">
+                      <div>Area: </div>
+                      <div className="skill-div">
+                        {post.area}
+                      </div>
+                    </div>
+                    </div>
               </Link>
                     {post?.is_owner ? (
-                      <div className="manage-tags-div">
+                      <div className="manage-skills-div">
                         <button
                           onClick={() =>
                             navigate(`/postList/${post.id}/edit-post`)

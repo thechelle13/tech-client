@@ -71,8 +71,11 @@ export const MyPosts = ({ setToken, token }) => {
                 <img className="post-image" src={post.title} alt={post.title} width="400px" />
                 <div>{post.content}</div>
               </div>
+
+              
               <div className="card-footer">
                 
+             
 
                 <h4 className="post-author">
                   Author: {post.tech_user.user.username}
@@ -80,6 +83,11 @@ export const MyPosts = ({ setToken, token }) => {
                 <h4 className="post-reactions">
                   Skill Count: {post.skills.length}
                 </h4>
+
+                <h4 className="post-reactions">
+                  Area: {post.areas.length}{post.area.label}
+                </h4>
+                
                 <div className="comment-buttons">
                   <button
                     className="delete-button"

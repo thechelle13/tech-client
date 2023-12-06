@@ -39,6 +39,7 @@ export const PostDetail = () => {
       title: postCopy.title,
       content: postCopy.content,
       approved: postCopy.approved,
+      area: postCopy.area,
       skills: postCopy.skills,
     };
     // debugger
@@ -79,13 +80,14 @@ export const PostDetail = () => {
               </div>
             </div>
             <div className="card-body">Content: {post.content}</div>
+            <div className="card-body">Area: {post.area}</div>
             <div className="card-footer">
              
-              <div className="card-tags">
-                <ul className="card-tag-header">Skills: </ul>
+              <div className="card-skills">
+                <ul className="card-skill-header">Skills: </ul>
                 <div className="skills">
                   {post.skills.map((skill) => (
-                    <li className="card-tag" key={skill.id}>
+                    <li className="card-skill" key={skill.id}>
                       {skill.label}
                     </li>
                   ))}
@@ -98,16 +100,16 @@ export const PostDetail = () => {
         )}
       </div>
       {post?.is_owner ? (
-        <div className="manage-tags-div">
-          <button className="manage-tags-button" onClick={handleManageSkills}>
+        <div className="manage-skills-div">
+          <button className="manage-skills-button" onClick={handleManageSkills}>
             Manage Skills
           </button>
         </div>
       ) : (
         ""
       )}
-      <dialog className="manage-tags" ref={manageSkills}>
-        <div className="tag-container">
+      <dialog className="manage-skills" ref={manageSkills}>
+        <div className="skill-container">
           {skills
             ? skills.map((skill) => (
                 <div key={skill.id}>
@@ -123,10 +125,10 @@ export const PostDetail = () => {
         </div>
 
         <div className="btn-div">
-          <button className="save-tag-btn" onClick={saveNewSkills}>
+          <button className="save-skill-btn" onClick={saveNewSkills}>
             Save Skill Selection
           </button>
-          <button className="close-tag-btn" onClick={handleCloseSkills}>
+          <button className="close-skill-btn" onClick={handleCloseSkills}>
             Close
           </button>
         </div>

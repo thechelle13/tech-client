@@ -20,10 +20,6 @@ export const NavBar = ({ token, setToken }) => {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a className="navbar-logo-group" href="/">
-         
-          <h1 className="title is-4">TechPower</h1>
-        </a>
 
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
@@ -57,6 +53,10 @@ export const NavBar = ({ token, setToken }) => {
               <Link to="/skills" className="navbar-item">
                 Skill Manager
               </Link>
+              <Link to="/skills" className="navbar-item">
+                Logout
+              </Link>
+
             </>
           ) : (
             ""

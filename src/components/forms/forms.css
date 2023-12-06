@@ -63,24 +63,24 @@ label{
     width: 40%;
 }
 
-.tags-group {
+.skills-group {
     display: flex;
     flex-direction: column;
 
 }
 
-.tags-label {
+.skills-label {
     padding: 10px;
 }
 
-.tags {
+.skills {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.tag{
+.skill{
     width: 20%;
     padding: 10px;
     margin: 10px;

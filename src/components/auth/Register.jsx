@@ -88,6 +88,13 @@ export const Register = ({setToken}) => {
             </div>
           </div>
         </div>
+        
+        {/* <div className="field">
+          <label className="label">Company:</label>
+          <div className="control">
+            <textarea className="textarea" placeholder="Company you represent" ref={company}></textarea>
+          </div>
+        </div> */}
 
         <div className="field">
           <label className="label">Bio</label>

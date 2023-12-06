@@ -9,7 +9,7 @@ export const getSkills = () => {
       }).then((res) => res.json())
   }
 
-  export const getSkillsByID = (tagId) => {
+  export const getSkillsByID = (skillId) => {
       return fetch(`http://localhost:8000/skills/${skillId}`,
       {
           method: "GET",
@@ -45,7 +45,7 @@ export const getSkills = () => {
     }
 
     export const deleteSkill = (skillId) => {
-        return fetch(`http://localhost:8000/tags/${skillId}`, 
+        return fetch(`http://localhost:8000/skills/${skillId}`, 
         {
             method: "DELETE",
             headers: {
