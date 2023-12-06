@@ -1,6 +1,9 @@
-/* .navbar-item img {
-   max-height: 3rem;
-} */
+/* Navbar.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* Add your custom styles below */
+
 a {
     text-decoration: none;
     color: inherit; /* Set the color to inherit from the parent element */
@@ -29,7 +32,7 @@ a {
     width: 170px;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.178);
  }
- 
+
  .navbar {
     display: flex;
     flex-wrap: nowrap;
@@ -40,7 +43,7 @@ a {
     display: flex;
     justify-content: space-around;
     width: 90%;
-    max-height: 60px;
+    max-height: 100px;
     background-color: rgba(128, 128, 128, 0.279);
     border-radius: 10px;
     padding: 20px;
@@ -81,3 +84,36 @@ a {
     transform: scale(1.1);
     cursor: pointer;
  }
+
+ /* Navbar.css */
+.navbar-burger {
+   @apply lg:hidden;
+ }
+ 
+ .navbar-menu {
+   @apply lg:flex;
+ }
+ 
+ .navbar-item {
+   @apply block lg:inline-block;
+ }
+ /* Navbar.css */
+.buttons {
+   @apply space-x-4;
+ }
+ 
+ .button {
+   @apply py-2 px-4 rounded;
+ }
+ 
+ .is-link {
+   @apply bg-blue-500 text-white;
+ }
+ 
+ .is-outlined {
+   @apply border border-gray-300 text-gray-700;
+ }
+
+
+ 
+ 

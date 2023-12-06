@@ -28,28 +28,32 @@ export const Login = ({ setToken }) => {
   }
 
   return (
-    <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
+    <section className="flex justify-center">
+      <form className="column is-two-thirds " onSubmit={handleLogin}>
         <h1 className="title">TechPower</h1>
         <p className="subtitle">Please sign in</p>
 
         <div className="field">
           <label className="label">Username</label>
           <div className="control">
-            <input className="input" type="text" ref={username} />
+            <input className="input" type="text" ref={username} placeholder="text here" />
           </div>
         </div>
 
         <div className="field">
           <label className="label">Password</label>
           <div className="control">
-            <input className="input" type="password" ref={password} />
+            <input 
+            className="input" 
+            type="password" 
+            ref={password}
+            placeholder="text here" />
           </div>
         </div>
 
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-link" type="submit" >Submit</button>
+            <button className="button" type="submit" >Submit</button>
           </div>
           <div className="control">
             <Link to="/register" className="button is-link is-light">Cancel</Link>

@@ -36,7 +36,7 @@ export const EditPostForm = () => {
     navigate("/postLists");
   };
 
-  const handleSave = (event) => {
+  const handleSave = async(event) => {
     event.preventDefault();
 
     const updatedItem = {
@@ -45,12 +45,34 @@ export const EditPostForm = () => {
       content: post.content,
       approved: true,
       skills: post.skills.map((skill) => skill.id),
+      area: post.area,
     };
-
-    editPost(updatedItem).then(() => {
-      navigate(`/postLists/${postId}`);
-    });
+    try {
+      const response = await editPost(updatedItem);
+  
+      if (!response.ok) {
+        console.error("Error updating post:", response.statusText);
+        console.log(response)
+        // Handle the error appropriately (e.g., show a message to the user)
+        return;
+      }
+  
+      // Assuming that the updated post is returned in the response
+      const updatedPost = await response.json();
+  
+      // Now you can navigate to the updated post
+      navigate(`/postLists/${updatedPost.id}`);
+    } catch (error) {
+      console.error("Error updating post:", error);
+      // Handle the error appropriately (e.g., show a message to the user)
+    }
   };
+
+
+  //   editPost(updatedItem).then(() => {
+  //     navigate(`/postLists/${postId}`);
+  //   });
+  // };
 
   return (
     <main className="form-parent">
