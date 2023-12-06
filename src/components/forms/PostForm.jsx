@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./forms.css";
 import { getSkills } from "../../services/skillServices";
+import { getAreas } from "../../services/areaServices";
 
 export const PostForm = ({token, setToken}) => {
+    const [areaLabels, setAreaLabels] = useState([]);
+
     const [skillLabels, setSkillLabels] = useState([]);
     const [chosenSkills, updateChosen] = useState(new Set());
     const [post, setPost] = useState({
@@ -11,6 +14,7 @@ export const PostForm = ({token, setToken}) => {
         content: "",
         publication_date: new Date(),
         approved: true,
+        
       });
 
       let navigate = useNavigate();
@@ -19,11 +23,23 @@ export const PostForm = ({token, setToken}) => {
         getSkills().then((skillArray) => {
           setSkillLabels(skillArray);
         });
+
+        getAreas().then((areaArray) => {
+          setAreaLabels(areaArray)
+        })
       }, []);
+
+      
     
       const updatePost = (e) => {
         const copy = { ...post };
         copy[e.target.id] = e.target.value;
+        setPost(copy);
+      };
+
+      const updateArea = (e) => {
+        const copy = { ...post };
+        copy.area = e.target.value;
         setPost(copy);
       };
 
@@ -38,6 +54,7 @@ export const PostForm = ({token, setToken}) => {
     
         // Retrieve the token from localStorage
         const authToken = localStorage.getItem("auth_token");
+        // const authToken = token;
     
         // Check if the token is present
         if (!authToken) {
@@ -139,6 +156,55 @@ export const PostForm = ({token, setToken}) => {
               </div>
             </div>
           </fieldset>
+
+          {/* <fieldset>
+          <div htmlFor="area"> Area:</div>
+          <select
+            name="area"
+            value={editArea.areaId}
+            onChange={(event) => {
+              const { value } = event.target;
+              setEditArea((prevEditArea) => ({
+                ...prevEditArea,
+                areaId: value,
+              }));
+            }}
+            required
+            autoFocus
+            autoComplete="off" 
+          >
+            <option value="petType">Please select an Area or field:</option>
+            {area.map((areaObj) => {
+              return (
+                <option key={areaObj.id} value={areaObj.id}>
+                  {areaObj.label}
+                </option>
+              );
+            })}
+          </select>
+        </fieldset> */}
+
+            <fieldset className="fieldset-div">
+              <div className="box-input">
+                <div>Area:</div>
+                <select
+                  className="input"
+                  name="area"
+                  onChange={updateArea}
+                  value={post.area}
+                >
+                  <option value={0}>Please select an Area</option>
+                  {areaLabels.map((areaObj) => {
+                    return (
+                      <option key={areaObj.id} value={areaObj.id}>
+                        {areaObj.label}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </fieldset>
+
         </fieldset>
       </div>
       <div className="button-div">
