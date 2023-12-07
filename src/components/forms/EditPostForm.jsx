@@ -76,16 +76,16 @@ export const EditPostForm = () => {
 
   return (
     <main className="form-parent">
-      <form className="form-and-header">
-        <div className="h1-div">
-          <h1>Edit Post Form</h1>
+      <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
+        <div className="h1-div mb-4">
+          <h1 className="text-2xl font-bold">Edit Post Form</h1>
         </div>
         <div className="form-container">
-          <fieldset className="form-fieldset">
+          <fieldset className="form-fieldset space-y-4">
             <div className="form-field">
-              <label>Title:</label>
+              <label className="block font-bold">Title:</label>
               <input
-                className="input-field"
+                className="input-field border p-2 w-full"
                 id="title"
                 onChange={updatePost}
                 type="text"
@@ -94,10 +94,11 @@ export const EditPostForm = () => {
                 required
               />
             </div>
+            {/* Uncomment the following block if you want to include an image field */}
             {/* <div className="form-field">
-              <label>Image:</label>
+              <label className="block font-bold">Image:</label>
               <input
-                className="input-field"
+                className="input-field border p-2 w-full"
                 id="image_url"
                 onChange={updatePost}
                 type="text"
@@ -106,12 +107,12 @@ export const EditPostForm = () => {
                 required
                 maxLength={200}
               />
-              Max Characters 200
+              <p className="text-sm text-gray-600">Max Characters: 200</p>
             </div> */}
             <div className="form-field">
-              <label>Content:</label>
+              <label className="block font-bold">Content:</label>
               <textarea
-                className="textarea-field"
+                className="textarea-field border p-2 w-full"
                 id="content"
                 onChange={updatePost}
                 placeholder=""
@@ -119,16 +120,20 @@ export const EditPostForm = () => {
                 required
               />
             </div>
-           
           </fieldset>
         </div>
-        <div className="button-div">
-          <button className="cancel-button" onClick={handleSave}>Edit Post</button>
-          <button className="cancel-button" onClick={handleCancel}>
+        <div className="button-div mt-4">
+          <button className="button bg-blue-500 text-white" onClick={handleSave}>
+            Edit Post
+          </button>
+          <button
+            className="button bg-gray-500 text-white ml-2"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
         </div>
       </form>
     </main>
   );
-};
+          }
