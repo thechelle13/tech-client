@@ -28,37 +28,41 @@ export const SkillForm = () => {
 
     let navigate = useNavigate();
 
-    return  (
-    <main className="form-parent">
-    <form className="form-and-header">
-      <div className="h1-div">
-        <h1>New Skill Form</h1>
-      </div>
-      <div className="form-container">
-        <fieldset className="form-fieldset">
-          <div className="form-field">
-            <label>New Skill:</label>
-            <input
-              className="input-field"
-              id="label"
-              onChange={updateSkill}
-              type="text"
-              placeholder="skill Name"
-              value={skill.label}
-              required
-            />
+    return (
+      <main className="form-parent">
+        <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
+          <div className="h1-div mb-4">
+            <h1 className="text-2xl font-bold">New Skill Form</h1>
           </div>
-        </fieldset>
-        <div className="button-div">
-          <button className="cancel-button" onClick={handleSave}>
-            Submit Skill
-          </button>
-          <button className="cancel-button" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
-        </div>
-      </div>
-    </form>
-  </main>
-);
+          <div className="form-container">
+            <fieldset className="form-fieldset">
+              <div className="form-field">
+                <label className="block font-bold">New Skill:</label>
+                <input
+                  className="input-field border p-2 w-full"
+                  id="label"
+                  onChange={updateSkill}
+                  type="text"
+                  placeholder="Skill Name"
+                  value={skill.label}
+                  required
+                />
+              </div>
+            </fieldset>
+          </div>
+          <div className="button-div mt-4">
+            <button className="button bg-blue-500 text-white" onClick={handleSave}>
+              Submit Skill
+            </button>
+            <button
+              className="button bg-gray-500 text-white ml-2"
+              onClick={() => navigate(-1)}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </main>
+    );
+    
 }

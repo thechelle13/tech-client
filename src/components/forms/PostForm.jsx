@@ -107,98 +107,97 @@ export const PostForm = ({token, setToken}) => {
         }
       };
 
-    return  (
-    <main className="form-parent">
-    <form className="form-and-header">
-      <div className="h1-div">
-        <h1>New Post Form</h1>
-      </div>
-      <div className="form-container">
-        <fieldset className="form-fieldset">
-          <div className="form-field">
-            <label>New Post:</label>
-            
-          </div>
-          <div className="form-field">
-            <label>Title:</label>
-            <textarea
-              className="textarea-field"
-              id="title"
-              onChange={updatePost}
-              placeholder="text here"
-              value={post.title}
-              required
-              maxLength={20}
-            />
-            Max Char 20
-          </div>
-          <div className="form-field">
-            <label>Content:</label>
-            <textarea
-              className="textarea-field"
-              id="content"
-              onChange={updatePost}
-              placeholder="text here"
-              value={post.content}
-              required
-              maxLength={200}
-            />
-            Max Characters 200
-          </div>
-         
-          <fieldset className="fieldset-div">
-            <div className="skills-group">
-              <div className="skills-label">Skills:</div>
-              {/* Map through categories and render checkboxes */}
-              <div className="skills">
-                {skillLabels.map((s) => (
-                  <div className="skill" key={s.id}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={chosenSkills.has(s.id)}
-                        onChange={() => handleSkillChosen(s)}
-                      />
-                      {s.label}
-                    </label>
-                  </div>
-                ))}
-              </div>
+      return (
+        <main className="form-parent">
+          <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
+            <div className="h1-div mb-4">
+              <h1 className="text-2xl font-bold">New Post Form</h1>
             </div>
-          </fieldset>
-
-            <fieldset className="fieldset-div">
-              <div className="box-input">
-                <div>Area:</div>
-                <select
-  className="input"
-  name="area"
-  onChange={(e) => handleAreaChosen(e.target.selectedOptions[0])}
-  value={post.area}
->
-  <option value={0}>Please select an Area</option>
-  
-  {areaLabels.map((areaObj) => {
-    return (
-      <option key={areaObj.id} value={areaObj.id}>
-        {areaObj.label}
-      </option>
-    );
-  })}
-</select>
-
-              </div>
-            </fieldset>
-
-        </fieldset>
-      </div>
-      <div className="button-div">
-        <button className="cancel-button" onClick={postPost}>Add Post</button>
-        <button className="cancel-button" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
-      </div>
-    </form>
-  </main>
-);
+            <div className="form-container">
+              <fieldset className="form-fieldset space-y-4">
+                <div className="form-field">
+                  <label className="block font-bold">New Post:</label>
+                </div>
+                <div className="form-field">
+                  <label className="block font-bold">Title:</label>
+                  <textarea
+                    className="textarea-field border p-2 w-full"
+                    id="title"
+                    onChange={updatePost}
+                    placeholder="Enter the title"
+                    value={post.title}
+                    required
+                    maxLength={20}
+                  />
+                  <p className="text-sm text-gray-600">Max Characters: 20</p>
+                </div>
+                <div className="form-field">
+                  <label className="block font-bold">Content:</label>
+                  <textarea
+                    className="textarea-field border p-2 w-full"
+                    id="content"
+                    onChange={updatePost}
+                    placeholder="Enter the content"
+                    value={post.content}
+                    required
+                    maxLength={200}
+                  />
+                  <p className="text-sm text-gray-600">Max Characters: 200</p>
+                </div>
+      
+                <fieldset className="fieldset-div space-y-4">
+                  <div className="skills-group">
+                    <div className="skills-label font-bold">Skills:</div>
+                    <div className="skills grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                      {skillLabels.map((s) => (
+                        <div key={s.id}>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={chosenSkills.has(s.id)}
+                              onChange={() => handleSkillChosen(s)}
+                            />
+                            <span className="ml-2">{s.label}</span>
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </fieldset>
+      
+                <fieldset className="fieldset-div space-y-4">
+                  <div className="box-input">
+                    <label className="block font-bold">Area:</label>
+                    <select
+                      className="input border p-2 w-full"
+                      name="area"
+                      onChange={(e) => handleAreaChosen(e.target.selectedOptions[0])}
+                      value={post.area}
+                    >
+                      <option value={0}>Please select an Area</option>
+                      {areaLabels.map((areaObj) => (
+                        <option key={areaObj.id} value={areaObj.id}>
+                          {areaObj.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </fieldset>
+              </fieldset>
+            </div>
+            <div className="button-div mt-4">
+              <button className="button bg-blue-500 text-white" onClick={postPost}>
+                Add Post
+              </button>
+              <button
+                className="button bg-gray-500 text-white ml-2"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </main>
+      );
+      
 }
