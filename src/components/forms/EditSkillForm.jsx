@@ -31,35 +31,38 @@ export const EditSkillForm = () => {
 
   return (
     <main className="form-parent">
-      <form className="form-and-header">
-        <div className="h1-div">
-          <h1>Edit Skills Form</h1>
+  <form className="form-and-header">
+    <div className="h1-div text-center">
+      <h1 className="text-2xl font-bold">Edit Skills Form</h1>
+    </div>
+    <div className="form-container">
+      <fieldset className="form-fieldset">
+        <div className="form-field mb-4">
+          <label htmlFor="label" className="block text-sm font-medium text-gray-600">
+            Edited Skill:
+          </label>
+          <input
+            className="input-field mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            id="label"
+            onChange={updateSkill}
+            type="text"
+            placeholder="New Skill Name"
+            value={skill.label}
+            required
+          />
         </div>
-        <div className="form-container">
-          <fieldset className="form-fieldset">
-            <div className="form-field">
-              <label>Edited Skill:</label>
-              <input
-                className="input-field"
-                id="label"
-                onChange={updateSkill}
-                type="text"
-                placeholder="New Skill Name"
-                value={skill.label}
-                required
-              />
-            </div>
-          </fieldset>
-          <div className="button-div">
-            <button className="cancel-button" onClick={handleEditSave}>
-              Save Edit
-            </button>
-            <button className="cancel-button" onClick={() => navigate("/skills")}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      </form>
-    </main>
+      </fieldset>
+      <div className="button-div flex justify-center">
+        <button className="button bg-blue-500 text-white" onClick={handleEditSave}>
+          Save Edit
+        </button>
+        <button className="button bg-gray-500 text-white ml-2" onClick={() => navigate("/skills")}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</main>
+
   );
 };
