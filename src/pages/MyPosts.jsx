@@ -60,61 +60,47 @@ export const MyPosts = ({ setToken, token }) => {
   }, [postToDelete]); // Fetch posts whenever postToDelete changes
 
   return (
-    <>
-      <div className="page-title">My Posts</div>
-      <div className="content">
+    <div className="container mx-auto mt-8">
+      <h1 className="text-3xl font-semibold mb-4">My Posts</h1>
+      <div>
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
-            <div className="card-item" key={post.id}>
-              <div className="card-header">
-                <div className="post-title">{post.title}</div>
-                <div className="post-date">
+            <div className="bg-gray-100 rounded-md p-4 mb-4" key={post.id}>
+              <div className="flex justify-between items-center mb-2">
+                <div className="text-xl font-semibold">{post.title}</div>
+                <div className="text-gray-500">
                   Publication Date: {post.publication_date}
                 </div>
               </div>
-              <div className="card-body">
-                <div className="post-title" src={post.title} alt={post.title} />
-                <div>{post.content}</div>
-              </div>
-
-              
-              <div className="card-footer">
-                
-             
-
-                <h4 className="post-author">
-                  Author: {post.tech_user.user.username}
-                </h4>
-                <h4 className="post-reactions">
-                  Skill Count: {post.skills.length}
-                </h4>
-
-                <h4 className="post-reactions">
-                  Area:
-                   {/* {post.areas.length}
-                   {post.area.label} */}
-                </h4>
-                {post?.is_owner ? (
-                      <div className="manage-skills-div">
-                        <button
-                          onClick={() =>
-                            navigate(`/postList/${post.id}/edit-post`)
-                          }
-                        >
-                          Edit
-                        </button>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                <div className="comment-buttons">
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeleteClick(post)}
-                  >
-                    Delete Post
-                  </button>
+              <div className="mb-4">{post.content}</div>
+  
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-sm text-gray-500">
+                    Author: {post.tech_user.user.username}
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    Skill Count: {post.skills.length}
+                  </div>
+                  {/* Add similar lines for other details like Area */}
                 </div>
+  
+                {post.is_owner && (
+                  <div className="manage-skills-div">
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+                      onClick={() => navigate(`/postList/${post.id}/edit-post`)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="bg-red-500 text-white px-4 py-2 rounded-md"
+                      onClick={() => handleDeleteClick(post)}
+                    >
+                      Delete Post
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))
@@ -122,6 +108,7 @@ export const MyPosts = ({ setToken, token }) => {
           <p>No posts found.</p>
         )}
       </div>
-    </>
+    </div>
   );
+  
 };

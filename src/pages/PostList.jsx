@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { getAllPosts } from "../services/postServices";
 import { Link, useNavigate } from "react-router-dom";
 
-export const PostList = ({ setToken, token }) => {
+export const PostList = (
+  { setToken, token }
+  ) => {
   const [posts, setPosts] = useState({});
   const navigate = useNavigate();
 
@@ -26,14 +28,14 @@ export const PostList = ({ setToken, token }) => {
 
   return (
     <>
-      <div className="page-title">All Posts</div>
-      <button className="btn-div" onClick={() => navigate("/create-post")}>
+      <div className="text-3xl font-semibold mb-4">All Posts</div>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4" onClick={() => navigate("/create-post")}>
         NEW POST
       </button>
       <div>
         {posts && posts.length ? (
           posts.map((post) => (
-            <div className="card-item" key={post.id}>
+            <div className="bg-gray-100 rounded-md p-4 mb-4" key={post.id}>
               <Link to={`/postLists/${post.id}`}>
                 <div className="post-details">
                     <div className="post-header">
