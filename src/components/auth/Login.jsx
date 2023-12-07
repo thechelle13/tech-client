@@ -29,14 +29,17 @@ export const Login = ({ setToken }) => {
 
   return (
     <section className="flex justify-center">
-      <form className="column is-two-thirds " onSubmit={handleLogin}>
-        <h1 className="title">TechPower</h1>
-        <p className="subtitle">Please sign in</p>
+      <form className="column bg-white rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleLogin}>
+        <h1 className="text-3xl font-bold mb-4">TechPower</h1>
+        <p className="text-lg mb-4">Please sign in</p>
 
         <div className="field">
           <label className="label">Username</label>
           <div className="control">
-            <input className="input" type="text" ref={username} placeholder="text here" />
+            <input  className="input rounded-md shadow-sm w-full py-2 px-4" 
+                    type="text" 
+                    ref={username} 
+                    placeholder="enter your username" />
           </div>
         </div>
 
@@ -44,23 +47,23 @@ export const Login = ({ setToken }) => {
           <label className="label">Password</label>
           <div className="control">
             <input 
-            className="input" 
+            className="input rounded-md shadow-sm w-full py-2 px-4" 
             type="password" 
             ref={password}
-            placeholder="text here" />
+            placeholder="enter your password" />
           </div>
         </div>
 
-        <div className="field is-grouped">
+        <div className="flex justify-between mb-4">
           <div className="control">
-            <button className="button" type="submit" >Submit</button>
+            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit" >Submit</button>
           </div>
           <div className="control">
             <Link to="/register" className="button is-link is-light">Cancel</Link>
           </div>
         </div>
         {
-          isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''
+          isUnsuccessful ? <p className="text-red-500 mt-4">Username or password not valid</p> : ''
         }
       </form>
     </section>

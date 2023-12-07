@@ -40,80 +40,73 @@ export const Register = ({setToken}) => {
   }
 
   return (
-    <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleRegister}>
-      <h1 className="title">TechPower</h1>
-        <p className="subtitle">Create an account</p>
-        <div className="field">
+    <section className="flex justify-center">
+      <form className="column bg-white rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleRegister}>
+        <h1 className="text-3xl font-bold mb-4">TechPower</h1>
+        <p className="text-lg mb-4">Create an account</p>
+
+        <div className="field mb-4">
           <label className="label">First Name</label>
           <div className="control">
-            <input className="input" type="text" ref={firstName} />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={firstName} placeholder="Enter your first name" />
           </div>
         </div>
 
-        <div className="field">
+        <div className="field mb-4">
           <label className="label">Last Name</label>
           <div className="control">
-            <input className="input" type="text" ref={lastName} />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={lastName} placeholder="Enter your last name" />
           </div>
         </div>
 
-        <div className="field">
+        <div className="field mb-4">
           <label className="label">Username</label>
           <div className="control">
-            <input className="input" type="text" ref={username} />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={username} placeholder="Choose a username" />
           </div>
         </div>
 
-        <div className="field">
+        <div className="field mb-4">
           <label className="label">Email</label>
           <div className="control">
-            <input className="input" type="email" ref={email} />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="email" ref={email} placeholder="Enter your email" />
           </div>
         </div>
 
-        <div className="field">
+        <div className="field mb-4">
           <label className="label">Password</label>
-          <div className="field-body">
-            <div className="field">
-              <p className="control is-expanded">
-                <input className="input" type="password" placeholder="Password" ref={password} />
-              </p>
-            </div>
-
-            <div className="field">
-              <p className="control is-expanded">
-                <input className="input" type="password" placeholder="Verify Password" ref={verifyPassword} />
-              </p>
-            </div>
+          <div className="control">
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="password" ref={password} placeholder="Enter your password" />
           </div>
         </div>
-        
-        {/* <div className="field">
-          <label className="label">Company:</label>
-          <div className="control">
-            <textarea className="textarea" placeholder="Company you represent" ref={company}></textarea>
-          </div>
-        </div> */}
 
-        <div className="field">
+        <div className="field mb-4">
+          <label className="label">Verify Password</label>
+          <div className="control">
+            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="password" ref={verifyPassword} placeholder="Verify your password" />
+          </div>
+        </div>
+
+        <div className="field mb-4">
           <label className="label">Bio</label>
           <div className="control">
-            <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio}></textarea>
+            <textarea className="textarea rounded-md shadow-sm w-full py-2 px-4" 
+                      placeholder="Tell us about yourself..." 
+                      ref={bio}>
+            </textarea>
           </div>
         </div>
 
-        
-        <div className="field is-grouped">
+        {/* <div className="field is-grouped justify-between mb-4"> */}
+        <div className="flex justify-between mb-4">
           <div className="control">
-            <button className="button is-link" type="submit">Submit</button>
+            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit">Submit</button>
           </div>
           <div className="control">
             <Link to="/login" className="button is-link is-light">Cancel</Link>
           </div>
         </div>
-
       </form>
     </section>
-  )
-}
+  );
+};

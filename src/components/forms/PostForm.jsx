@@ -50,11 +50,20 @@ export const PostForm = ({token, setToken}) => {
       };
 
 //debugger
-      const handleAreaChosen = (a) => {
+      // const handleAreaChosen = (a) => {
+      //   const copy = new Set(chosenArea);
+      //   copy.has(a.id) ? copy.delete(a.id) : copy.add(a.id);
+      //   updateChosenArea(copy);
+      // };
+
+      const handleAreaChosen = (selectedArea) => {
         const copy = new Set(chosenArea);
-        copy.has(a.id) ? copy.delete(a.id) : copy.add(a.id);
+        const areaId = selectedArea.id;
+      
+        copy.has(areaId) ? copy.delete(areaId) : copy.add(areaId);
         updateChosenArea(copy);
       };
+      
     
 
 //debugger
@@ -162,21 +171,22 @@ export const PostForm = ({token, setToken}) => {
               <div className="box-input">
                 <div>Area:</div>
                 <select
-                  className="input"
-                  name="area"
-                  onChange={() => handleAreaChosen(areaLabels)}
-                  value={post.area}
-                >
-                  <option value={0}>Please select an Area</option>
-                
-                  {areaLabels.map((areaObj) => {
-                    return (
-                      <option key={areaObj.id} value={areaObj.id}>
-                        {areaObj.label}
-                      </option>
-                    );
-                  })}
-                </select>
+  className="input"
+  name="area"
+  onChange={(e) => handleAreaChosen(e.target.selectedOptions[0])}
+  value={post.area}
+>
+  <option value={0}>Please select an Area</option>
+  
+  {areaLabels.map((areaObj) => {
+    return (
+      <option key={areaObj.id} value={areaObj.id}>
+        {areaObj.label}
+      </option>
+    );
+  })}
+</select>
+
               </div>
             </fieldset>
 
