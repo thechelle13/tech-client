@@ -1,12 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { Login } from "../components/auth/Login";
 import { Register } from "../components/auth/Register";
 import { Authorized } from "./Authorized";
 import { Home } from "../pages/Home";
-
 import { PostList } from "../pages/PostList";
 import { SkillList } from "../pages/SkillList";
-
 import { PostDetail } from "../pages/PostDetail";
 import { MyPosts } from "../pages/MyPosts";
 import { SkillForm } from "../components/forms/SkillForm";

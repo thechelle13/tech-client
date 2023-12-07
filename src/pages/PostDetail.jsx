@@ -70,19 +70,16 @@ export const PostDetail = () => {
 
   return (
     <>
-      <div className="card-item">
+      <div className="card-item bg-gray-200 p-4 rounded-md">
         {post ? (
           <>
-            <div className="card-header" key={post.id}>
-              <div className="card-title">Title: {post.title}</div>
-              <div className="card-author">
-                Author: {post.tech_user.user.username}
-              </div>
+            <div className="card-header mb-4" key={post.id}>
+              <div className="card-title text-xl font-bold">Title: {post.title}</div>
+              <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
-            <div className="card-body">Content: {post.content}</div>
-            <div className="card-body">Area: {post.area}</div>
+            <div className="card-body mb-4">Content: {post.content}</div>
+            <div className="card-body mb-4">Area: {post.area}</div>
             <div className="card-footer">
-             
               <div className="card-skills">
                 <ul className="card-skill-header">Skills: </ul>
                 <div className="skills">
@@ -101,7 +98,7 @@ export const PostDetail = () => {
       </div>
       {post?.is_owner ? (
         <div className="manage-skills-div">
-          <button className="manage-skills-button" onClick={handleManageSkills}>
+          <button className="manage-skills-button bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleManageSkills}>
             Manage Skills
           </button>
         </div>
@@ -112,23 +109,22 @@ export const PostDetail = () => {
         <div className="skill-container">
           {skills
             ? skills.map((skill) => (
-                <div key={skill.id}>
+                <div key={skill.id} className="mb-2">
                   <input
                     type="checkbox"
                     checked={selectedSkills.has(skill.id)}
                     onChange={() => handleSelectedSkill(skill)}
                   />
-                  {skill.label}
+                  <span className="ml-2">{skill.label}</span>
                 </div>
               ))
             : "No skills found"}
         </div>
-
-        <div className="btn-div">
-          <button className="save-skill-btn" onClick={saveNewSkills}>
+        <div className="btn-div mt-4">
+          <button className="save-skill-btn bg-green-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
             Save Skill Selection
           </button>
-          <button className="close-skill-btn" onClick={handleCloseSkills}>
+          <button className="close-skill-btn bg-gray-500 text-white px-4 py-2 rounded-md ml-2" onClick={handleCloseSkills}>
             Close
           </button>
         </div>

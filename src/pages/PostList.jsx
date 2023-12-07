@@ -28,8 +28,8 @@ export const PostList = (
 
   return (
     <>
-      <div className="text-3xl font-semibold mb-4">All Posts</div>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4" onClick={() => navigate("/create-post")}>
+      <div className="text-3xl font-semibold mb-4 text-center">All Posts</div>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
         NEW POST
       </button>
       <div>
@@ -71,7 +71,7 @@ export const PostList = (
                     <div className="post-skill-container">
                       <div>Area: </div>
                       <div className="skill-div">
-                        {post.area}
+                        {post.area.label}
                       </div>
                     </div>
                     </div>
@@ -79,6 +79,7 @@ export const PostList = (
                     {post?.is_owner ? (
                       <div className="manage-skills-div">
                         <button
+                          className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
                           onClick={() =>
                             navigate(`/postList/${post.id}/edit-post`)
                           }

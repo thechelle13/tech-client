@@ -6,7 +6,7 @@ import { getAreas } from "../../services/areaServices";
 
 export const PostForm = ({token, setToken}) => {
     const [areaLabels, setAreaLabels] = useState([]);
-    const [chosenArea, updateChosenArea] = useState(new Set());
+    // const [chosenArea, updateChosenArea] = useState(new Set());
     const [skillLabels, setSkillLabels] = useState([]);
     const [chosenSkills, updateChosenSkills] = useState(new Set());
     const [post, setPost] = useState({
@@ -14,7 +14,7 @@ export const PostForm = ({token, setToken}) => {
         content: "",
         publication_date: new Date(),
         approved: true,
-        
+        area: 0,
       });
 
       let navigate = useNavigate();
@@ -28,45 +28,25 @@ export const PostForm = ({token, setToken}) => {
           setAreaLabels(areaArray)
         })
       }, []);
-
-      
-    
+  
       const updatePost = (e) => {
         const copy = { ...post };
         copy[e.target.id] = e.target.value;
         setPost(copy);
       };
 
-      // const updateArea = (e) => {
-      //   const copy = { ...post };
-      //   copy.area = e.target.value;
-      //   setPost(copy);
-      // };
-
+      const updateArea = (e) => {
+        const copy = { ...post };
+        copy.area = e.target.value;
+        setPost(copy);
+      };
       const handleSkillChosen = (s) => {
         const copy = new Set(chosenSkills);
         copy.has(s.id) ? copy.delete(s.id) : copy.add(s.id);
         updateChosenSkills(copy);
       };
 
-//debugger
-      // const handleAreaChosen = (a) => {
-      //   const copy = new Set(chosenArea);
-      //   copy.has(a.id) ? copy.delete(a.id) : copy.add(a.id);
-      //   updateChosenArea(copy);
-      // };
 
-      const handleAreaChosen = (selectedArea) => {
-        const copy = new Set(chosenArea);
-        const areaId = selectedArea.id;
-      
-        copy.has(areaId) ? copy.delete(areaId) : copy.add(areaId);
-        updateChosenArea(copy);
-      };
-      
-    
-
-//debugger
       const postPost = async (evt) => {
         evt.preventDefault();
     
@@ -100,8 +80,7 @@ export const PostForm = ({token, setToken}) => {
           const createdPost = await response.json();
           const postId = createdPost.id;
     
-          // Navigate to the detail page of the created post
-          navigate(`/postLists/${postId}`);
+          navigate(`/postLists`);
         } catch (error) {
           console.error("Error posting post:", error);
         }
@@ -164,25 +143,30 @@ export const PostForm = ({token, setToken}) => {
                     </div>
                   </div>
                 </fieldset>
-      
+
+
                 <fieldset className="fieldset-div space-y-4">
-                  <div className="box-input">
-                    <label className="block font-bold">Area:</label>
-                    <select
-                      className="input border p-2 w-full"
-                      name="area"
-                      onChange={(e) => handleAreaChosen(e.target.selectedOptions[0])}
-                      value={post.area}
-                    >
-                      <option value={0}>Please select an Area</option>
-                      {areaLabels.map((areaObj) => (
-                        <option key={areaObj.id} value={areaObj.id}>
-                          {areaObj.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </fieldset>
+              <div className="box-input">
+              <label className="block font-bold">Area:</label>
+                <select
+                  className="input border p-2 w-full"
+                  name="area"
+                  onChange={updateArea}
+                  // onChange={(e) => handleAreaChosen(e.target.value)}
+                  value={post.area.id}
+                >
+                  <option value={0}>Please select an Area</option>
+                  {areaLabels.map((typeObj) => {
+                    return (
+                      <option key={typeObj.id} value={typeObj.id}>
+                        {typeObj.label}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </fieldset>
+               
               </fieldset>
             </div>
             <div className="button-div mt-4">

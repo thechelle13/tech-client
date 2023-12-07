@@ -21,9 +21,6 @@ export const MyPosts = ({ setToken, token }) => {
     }
   };
 
-  // const handleEditClick = (post) => {
-
-  // }
   const handleDeleteClick = (post) => {
     setPostToDelete(post);
   };
@@ -34,11 +31,9 @@ export const MyPosts = ({ setToken, token }) => {
         const confirmDelete = window.confirm(
           "Are you sure you want to delete this post?"
         );
-
         if (confirmDelete) {
           try {
             await deletePost(postToDelete.id);
-
             // Update the state immediately after successful deletion
             setMyPosts((prevPosts) =>
               prevPosts.filter((post) => post.id !== postToDelete.id)
@@ -57,11 +52,11 @@ export const MyPosts = ({ setToken, token }) => {
 
   useEffect(() => {
     getAndSetMyPosts();
-  }, [postToDelete]); // Fetch posts whenever postToDelete changes
+  }, [postToDelete]);
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-semibold mb-4">My Posts</h1>
+      <h1 className="text-3xl font-semibold mb-4 text-center">My Posts</h1>
       <div>
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
@@ -105,7 +100,7 @@ export const MyPosts = ({ setToken, token }) => {
             </div>
           ))
         ) : (
-          <p>No posts found.</p>
+          <p className="text-xl font-semibold mb-4">No posts found.</p>
         )}
       </div>
     </div>

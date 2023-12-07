@@ -10,6 +10,7 @@ export const EditPostForm = () => {
     content: "",
     publication_date: new Date(),
     approved: true,
+    area: 1,
   });
 
   const { postId } = useParams();
@@ -17,7 +18,6 @@ export const EditPostForm = () => {
   let navigate = useNavigate();
 
   
-
   useEffect(() => {
     getPostById(postId).then((postObj) => {
       setPost(postObj);
@@ -45,7 +45,7 @@ export const EditPostForm = () => {
       content: post.content,
       approved: true,
       skills: post.skills.map((skill) => skill.id),
-      area: post.area,
+      area: post.area.id,
     };
     try {
       const response = await editPost(updatedItem);
@@ -120,7 +120,42 @@ export const EditPostForm = () => {
                 required
               />
             </div>
+            {/* <div className="form-field">
+            <label className="block font-bold">Area:</label>
+            <select
+                className="textarea-field border p-2 w-full"
+                id="content"
+                onChange={updatePost}
+                placeholder=""
+                value={post.area.label}
+                required
+              />
+              </div> */}
           </fieldset>
+          <fieldset className="fieldset-div space-y-4">
+              <div className="box-input">
+              <label className="block font-bold">Area:</label>
+                <select
+                  className="input border p-2 w-full"
+                  name="area"
+                  onChange={updatePost}
+                  value={post.area.id}
+                >
+                  <option value={0}>Please select an Area</option>
+                  {Array.isArray(post.area) ? (
+                  post.area.map((typeObj) => (
+                  <option key={typeObj.id} value={typeObj.id}>
+                  {typeObj.label}
+                  </option>
+                  ))
+                  ) : (
+                  <option key={post.area.id} value={post.area.id}>
+                  {post.area.label}
+                  </option>
+                  )}
+                </select>
+              </div>
+            </fieldset>
         </div>
         <div className="button-div mt-4">
           <button className="button bg-blue-500 text-white" onClick={handleSave}>
