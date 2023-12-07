@@ -6,7 +6,6 @@ import { getAreas } from "../../services/areaServices";
 
 export const PostForm = ({token, setToken}) => {
     const [areaLabels, setAreaLabels] = useState([]);
-    // const [chosenArea, updateChosenArea] = useState(new Set());
     const [skillLabels, setSkillLabels] = useState([]);
     const [chosenSkills, updateChosenSkills] = useState(new Set());
     const [post, setPost] = useState({
@@ -40,7 +39,7 @@ export const PostForm = ({token, setToken}) => {
         copy.area = e.target.value;
         setPost(copy);
       };
-      const handleSkillChosen = (s) => {
+      const updateSkill = (s) => {
         const copy = new Set(chosenSkills);
         copy.has(s.id) ? copy.delete(s.id) : copy.add(s.id);
         updateChosenSkills(copy);
@@ -134,7 +133,7 @@ export const PostForm = ({token, setToken}) => {
                             <input
                               type="checkbox"
                               checked={chosenSkills.has(s.id)}
-                              onChange={() => handleSkillChosen(s)}
+                              onChange={() => updateSkill(s)}
                             />
                             <span className="ml-2">{s.label}</span>
                           </label>
@@ -152,7 +151,6 @@ export const PostForm = ({token, setToken}) => {
                   className="input border p-2 w-full"
                   name="area"
                   onChange={updateArea}
-                  // onChange={(e) => handleAreaChosen(e.target.value)}
                   value={post.area.id}
                 >
                   <option value={0}>Please select an Area</option>

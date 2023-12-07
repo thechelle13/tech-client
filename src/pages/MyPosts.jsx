@@ -62,7 +62,7 @@ export const MyPosts = ({ setToken, token }) => {
           myPosts.map((post) => (
             <div className="bg-gray-100 rounded-md p-4 mb-4" key={post.id}>
               <div className="flex justify-between items-center mb-2">
-                <div className="text-xl font-semibold">{post.title}</div>
+                <div className="text-xl font-semibold">Title: {post.title}</div>
                 <div className="text-gray-500">
                   Publication Date: {post.publication_date}
                 </div>
@@ -75,9 +75,12 @@ export const MyPosts = ({ setToken, token }) => {
                     Author: {post.tech_user.user.username}
                   </div>
                   <div className="text-sm text-gray-500">
-                    Skill Count: {post.skills.length}
+                    Skill Count: {post.skills.length} 
                   </div>
-                  {/* Add similar lines for other details like Area */}
+                  <div className="text-sm text-gray-500">
+                    Area: {post.area.label} 
+                  </div>
+                 
                 </div>
   
                 {post.is_owner && (
@@ -100,7 +103,7 @@ export const MyPosts = ({ setToken, token }) => {
             </div>
           ))
         ) : (
-          <p className="text-xl font-semibold mb-4">No posts found.</p>
+          <p className="text-xl font-semibold mb-4 text-center">No posts found.</p>
         )}
       </div>
     </div>

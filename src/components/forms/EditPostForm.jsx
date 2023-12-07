@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { editPost, getPostById } from "../../services/postServices";
 import "./forms.css";
+import { getAreaByID } from "../../services/areaServices";
 
 export const EditPostForm = () => {
- 
+
   const [post, setPost] = useState({
     title: "",
     content: "",
@@ -14,9 +15,16 @@ export const EditPostForm = () => {
   });
 
   const { postId } = useParams();
+  const { areaId } = useParams();
+  const { skillId } = useParams();
 
   let navigate = useNavigate();
 
+  // useEffect(() => {
+  //   getAreaByID(areaId).then((areaObj) => {
+  //     setAreaLabels(areaObj)
+  //   })
+  // }, [areaId]);
   
   useEffect(() => {
     getPostById(postId).then((postObj) => {
@@ -24,12 +32,28 @@ export const EditPostForm = () => {
     });
   }, [postId]);
 
+  // useEffect(() => {
+  //   getSkillById(skillId).then((skillObj) => {
+  //     setSkillLabels(skillObj);
+  //   });
+  // }, [skillId]);
+
   const updatePost = (e) => {
     const copy = { ...post };
     copy[e.target.id] = e.target.value;
     setPost(copy);
   };
 
+  const updateArea = (e) => {
+    const copy = { ...post };
+    copy.area = e.target.value;
+    setPost(copy);
+  };
+  // const updateSkill = (s) => {
+  //   const copy = new Set(chosenSkills);
+  //   copy.has(s.id) ? copy.delete(s.id) : copy.add(s.id);
+  //   updateChosenSkills(copy);
+  // };
 
 
   const handleCancel = () => {
@@ -127,13 +151,15 @@ export const EditPostForm = () => {
                 id="content"
                 onChange={updatePost}
                 placeholder=""
-                value={post.area.label}
+                value={post.area.id}
+                
                 required
               />
+              
               </div> */}
-          </fieldset>
-          <fieldset className="fieldset-div space-y-4">
-              <div className="box-input">
+
+            <fieldset className="fieldset-div space-y-4">
+              <div className="form-field">
               <label className="block font-bold">Area:</label>
                 <select
                   className="input border p-2 w-full"
@@ -142,7 +168,7 @@ export const EditPostForm = () => {
                   value={post.area.id}
                 >
                   <option value={0}>Please select an Area</option>
-                  {Array.isArray(post.area) ? (
+                  {Array.isArray(post.area.id) ? (
                   post.area.map((typeObj) => (
                   <option key={typeObj.id} value={typeObj.id}>
                   {typeObj.label}
@@ -156,6 +182,29 @@ export const EditPostForm = () => {
                 </select>
               </div>
             </fieldset>
+
+          </fieldset>
+          {/* <fieldset className="fieldset-div space-y-4">
+                  <div className="skills-group">
+                    <div className="skills-label font-bold">Skills:</div>
+                    <div className="skills grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                      {skillLabels.map((s) => (
+                        <div key={s.id}>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={chosenSkills.has(s.id)}
+                              onChange={() => updatePost(s)}
+                            />
+                            <span className="ml-2">{s.label}</span>
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </fieldset> */}
+          
+             
         </div>
         <div className="button-div mt-4">
           <button className="button bg-blue-500 text-white" onClick={handleSave}>
