@@ -39,7 +39,7 @@ export const PostDetail = () => {
       title: postCopy.title,
       content: postCopy.content,
       approved: postCopy.approved,
-      area: postCopy.area,
+      area: postCopy.area.id,
       skills: postCopy.skills,
     };
     // debugger
@@ -78,7 +78,7 @@ export const PostDetail = () => {
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
             <div className="card-body mb-4">Content: {post.content}</div>
-            <div className="card-body mb-4">Area: {post.area}</div>
+            <div className="card-body mb-4">Area: {post.area.label}</div>
             <div className="card-footer">
               <div className="card-skills">
                 <ul className="card-skill-header">Skills: </ul>
