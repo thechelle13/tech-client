@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { deleteSkill, getSkills } from "../services/skillServices.jsx";
+import steveImage from '../assets/steve.png';
 
 export const SkillList = ({ setToken, token }) => {
   const [skills, setSkills] = useState([]);
@@ -37,21 +37,27 @@ export const SkillList = ({ setToken, token }) => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-semibold mb-4 text-center">Skills</h1>
+    <div className="flex items-center justify-center mb-4">
+      <img className="app-logo mr-4" src={steveImage} alt="Good job Steve" />
+      <h1 className="text-3xl font-semibold text-center">Skills</h1>
+      <img className="app-logo ml-4" src={steveImage} alt="Good job Steve" />
+    </div>
+      <div className="flex items-center justify-center">
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
         onClick={() => navigate("/create-skill")}
       >
         ADD NEW Skill
       </button>
-      <div>
+      </div>
+      <div >
         {sortedSkills && sortedSkills.length ? (
           sortedSkills.map((skill) => (
             <div className="bg-gray-100 rounded-md p-4 mb-4" key={skill.id}>
-              <div className="text-xl font-semibold mb-2">{skill.label}</div>
-              <div className="flex items-center space-x-4">
+              <div className="text-xl font-semibold flex items-center justify-center mb-2">{skill.label}</div>
+              <div className="flex items-center justify-center space-x-4">
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                  className="bg-blue-500 text-white  px-4 py-2 rounded-md"
                   onClick={() => navigate(`/edit-skill/${skill.id}`)}
                 >
                   Edit
@@ -71,4 +77,4 @@ export const SkillList = ({ setToken, token }) => {
       </div>
     </div>
   );
-        }  
+}  

@@ -8,7 +8,9 @@ export const PostDetail = () => {
   const [post, setPost] = useState(null);
   const [skills, setSkills] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState(new Set());
+
   const navigate = useNavigate();
+
   const manageSkills = useRef();
 
   useEffect(() => {
@@ -29,20 +31,27 @@ export const PostDetail = () => {
     copy.has(skill.id) ? copy.delete(skill.id) : copy.add(skill.id);
     setSelectedSkills(copy);
   };
+//debugger
 
   const saveNewSkills = async (event) => {
     event.preventDefault();
+
     const postCopy = { ...post };
+
     postCopy.skills = Array.from(selectedSkills);
 
     const updatedPost = {
       title: postCopy.title,
       content: postCopy.content,
+      image_url: postCopy.image_url,
+      affliate: postCopy.affliate,
       approved: postCopy.approved,
       area: postCopy.area.id,
       skills: postCopy.skills,
     };
+
     // debugger
+
     await fetch(`http://localhost:8000/posts/${postId}`, {
       method: "PUT",
       headers: {
@@ -51,17 +60,27 @@ export const PostDetail = () => {
       },
       body: JSON.stringify(updatedPost),
     });
-    getSkills().then((skillsArray) => setSkills(skillsArray));
+
+    getSkills().then((skillsArray) => 
+
+    // setSkills(skillsArray));
+    saveNewSkills(skillsArray));
+
     manageSkills.current.close();
-    // navigate(0)
+
+    navigate(0)
   };
 
+
+  // working
   const handleManageSkills = () => {
     if (manageSkills.current) {
       manageSkills.current.showModal();
     }
   };
 
+
+//working
   const handleCloseSkills = () => {
     if (manageSkills.current) {
       manageSkills.current.close();
@@ -77,6 +96,8 @@ export const PostDetail = () => {
               <div className="card-title text-xl font-bold">Title: {post.title}</div>
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
+            <div className="card-body mb-4">Image: {post.image_url}</div>
+            <div className="card-body mb-4">Affliate: {post.affliate}</div>
             <div className="card-body mb-4">Content: {post.content}</div>
             <div className="card-body mb-4">Area: {post.area.label}</div>
             <div className="card-footer">
@@ -95,12 +116,17 @@ export const PostDetail = () => {
         ) : (
           <p>No post found.</p>
         )}
+         <div>
+          <button>Contact</button>
+        </div>
       </div>
       {post?.is_owner ? (
-        <div className="manage-skills-div">
-          <button className="manage-skills-button bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleManageSkills}>
-            Manage Skills
-          </button>
+        <div className="flex items-center justify-center">
+          <div className="manage-skills-div">
+            <button className="manage-skills-button bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleManageSkills}>
+              Manage Skills
+            </button>
+          </div>
         </div>
       ) : (
         ""
@@ -120,6 +146,7 @@ export const PostDetail = () => {
               ))
             : "No skills found"}
         </div>
+       
         <div className="btn-div mt-4">
           <button className="save-skill-btn bg-green-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
             Save Skill Selection

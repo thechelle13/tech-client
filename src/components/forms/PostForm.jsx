@@ -55,7 +55,7 @@ export const PostForm = ({token, setToken}) => {
     
         // Check if the token is present
         if (!authToken) {
-          console.error("Rock token not found in localStorage");
+          console.error("Tech token not found in localStorage");
           return;
         }
     
@@ -122,6 +122,33 @@ export const PostForm = ({token, setToken}) => {
                   />
                   <p className="text-sm text-gray-600">Max Characters: 200</p>
                 </div>
+                <div className="form-field">
+                  <label className="block font-bold">Affliate:</label>
+                  <textarea
+                    className="textarea-field border p-2 w-full"
+                    id="affliate"
+                    onChange={updatePost}
+                    placeholder="Enter a company or cohort"
+                    value={post.affliate}
+                    required
+                    maxLength={200}
+                  />
+                  <p className="text-sm text-gray-600">Max Characters: 20</p>
+                </div>
+
+                <div className="form-field">
+                  <label className="block font-bold">Image:</label>
+                  <textarea
+                    className="textarea-field border p-2 w-full"
+                    id="image_url"
+                    onChange={updatePost}
+                    placeholder="Image"
+                    value={post.image_url}
+                    required
+                    maxLength={200}
+                  />
+                  <p className="text-sm text-gray-600">Max Characters: 200</p>
+                </div>
       
                 <fieldset className="fieldset-div space-y-4">
                   <div className="skills-group">
@@ -144,7 +171,7 @@ export const PostForm = ({token, setToken}) => {
                 </fieldset>
 
 
-                <fieldset className="fieldset-div space-y-4">
+                <fieldset className="fieldset-div space-y-4 flex items-center justify-center">
               <div className="box-input">
               <label className="block font-bold">Area:</label>
                 <select
