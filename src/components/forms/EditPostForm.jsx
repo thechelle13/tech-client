@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { editPost, getPostById } from "../../services/postServices";
-import "./forms.css";
-import { getAreaByID } from "../../services/areaServices";
+import "./forms.css";;
+import { getAreas } from "../../services/areaServices";
+
 
 export const EditPostForm = () => {
-
+  const [areaLabels, setAreaLabels] = useState([]);
   const [post, setPost] = useState({
     title: "",
+    image_url: "",
+    affiliate: "",
     content: "",
     publication_date: new Date(),
     approved: true,
@@ -15,16 +18,8 @@ export const EditPostForm = () => {
   });
 
   const { postId } = useParams();
-  const { areaId } = useParams();
-  const { skillId } = useParams();
 
   let navigate = useNavigate();
-
-  // useEffect(() => {
-  //   getAreaByID(areaId).then((areaObj) => {
-  //     setAreaLabels(areaObj)
-  //   })
-  // }, [areaId]);
   
   useEffect(() => {
     getPostById(postId).then((postObj) => {
@@ -32,11 +27,11 @@ export const EditPostForm = () => {
     });
   }, [postId]);
 
-  // useEffect(() => {
-  //   getSkillById(skillId).then((skillObj) => {
-  //     setSkillLabels(skillObj);
-  //   });
-  // }, [skillId]);
+  useEffect(() => {
+      getAreas().then((areaArray) => {
+      setAreaLabels(areaArray)
+    })
+  }, []);
 
   const updatePost = (e) => {
     const copy = { ...post };
@@ -49,54 +44,30 @@ export const EditPostForm = () => {
     copy.area = e.target.value;
     setPost(copy);
   };
-  // const updateSkill = (s) => {
-  //   const copy = new Set(chosenSkills);
-  //   copy.has(s.id) ? copy.delete(s.id) : copy.add(s.id);
-  //   updateChosenSkills(copy);
-  // };
 
 
   const handleCancel = () => {
     navigate("/postLists");
   };
 
-  const handleSave = async(event) => {
+  const handleSave = (event) => {
     event.preventDefault();
 
     const updatedItem = {
       id: post.id, 
       title: post.title,
+      image_url: post.image,
+      affiliate: post.affiliate,
       content: post.content,
       approved: true,
-      skills: post.skills.map((skill) => skill.id),
       area: post.area.id,
+      skills: post.skills.map((skill) => skill.id),
     };
-    try {
-      const response = await editPost(updatedItem);
-  
-      if (!response.ok) {
-        console.error("Error updating post:", response.statusText);
-        console.log(response)
-        // Handle the error appropriately (e.g., show a message to the user)
-        return;
-      }
-  
-      // Assuming that the updated post is returned in the response
-      const updatedPost = await response.json();
-  
-      // Now you can navigate to the updated post
-      navigate(`/postLists/${updatedPost.id}`);
-    } catch (error) {
-      console.error("Error updating post:", error);
-      // Handle the error appropriately (e.g., show a message to the user)
-    }
+
+    editPost(updatedItem).then(() => {
+      navigate(`/postLists/${postId}`);
+    });
   };
-
-
-  //   editPost(updatedItem).then(() => {
-  //     navigate(`/postLists/${postId}`);
-  //   });
-  // };
 
   return (
     <main className="form-parent">
@@ -107,7 +78,7 @@ export const EditPostForm = () => {
         <div className="form-container">
           <fieldset className="form-fieldset space-y-4">
             <div className="form-field">
-              <label className="block font-bold">Title:</label>
+              <label className="block font-bold" htmlFor="title">Title:</label>
               <input
                 className="input-field border p-2 w-full"
                 id="title"
@@ -118,9 +89,10 @@ export const EditPostForm = () => {
                 required
               />
             </div>
+
             {/* Uncomment the following block if you want to include an image field */}
-            {/* <div className="form-field">
-              <label className="block font-bold">Image:</label>
+            <div className="form-field">
+              <label className="block font-bold" htmlFor="image_url">Image:</label>
               <input
                 className="input-field border p-2 w-full"
                 id="image_url"
@@ -132,9 +104,22 @@ export const EditPostForm = () => {
                 maxLength={200}
               />
               <p className="text-sm text-gray-600">Max Characters: 200</p>
-            </div> */}
+            </div>
+
             <div className="form-field">
-              <label className="block font-bold">Content:</label>
+              <label className="block font-bold" htmlFor="affliate">Affliate:</label>
+              <textarea
+                className="textarea-field border p-2 w-full"
+                id="affliate"
+                onChange={updatePost}
+                placeholder=""
+                value={post.affliate}
+                required
+              />
+            </div>
+
+            <div className="form-field">
+              <label className="block font-bold" htmlFor="content">Content:</label>
               <textarea
                 className="textarea-field border p-2 w-full"
                 id="content"
@@ -144,66 +129,31 @@ export const EditPostForm = () => {
                 required
               />
             </div>
-            {/* <div className="form-field">
-            <label className="block font-bold">Area:</label>
-            <select
-                className="textarea-field border p-2 w-full"
-                id="content"
-                onChange={updatePost}
-                placeholder=""
-                value={post.area.id}
-                
-                required
-              />
-              
-              </div> */}
 
             <fieldset className="fieldset-div space-y-4">
-              <div className="form-field">
-              <label className="block font-bold">Area:</label>
+              <div className="box-input">
+              <label className="block font-bold"  htmlFor="area">Area:</label>
                 <select
                   className="input border p-2 w-full"
+                  id="area" 
                   name="area"
-                  onChange={updatePost}
+                  onChange={updateArea}
                   value={post.area.id}
                 >
                   <option value={0}>Please select an Area</option>
-                  {Array.isArray(post.area.id) ? (
-                  post.area.map((typeObj) => (
-                  <option key={typeObj.id} value={typeObj.id}>
-                  {typeObj.label}
-                  </option>
-                  ))
-                  ) : (
-                  <option key={post.area.id} value={post.area.id}>
-                  {post.area.label}
-                  </option>
-                  )}
+
+                  {areaLabels.map((typeObj) => {
+                    return (
+                      <option key={typeObj.id} value={typeObj.id}>
+                        {typeObj.label}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </fieldset>
 
-          </fieldset>
-          {/* <fieldset className="fieldset-div space-y-4">
-                  <div className="skills-group">
-                    <div className="skills-label font-bold">Skills:</div>
-                    <div className="skills grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                      {skillLabels.map((s) => (
-                        <div key={s.id}>
-                          <label className="flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={chosenSkills.has(s.id)}
-                              onChange={() => updatePost(s)}
-                            />
-                            <span className="ml-2">{s.label}</span>
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </fieldset> */}
-          
+          </fieldset>        
              
         </div>
         <div className="button-div mt-4">
@@ -220,4 +170,4 @@ export const EditPostForm = () => {
       </form>
     </main>
   );
-          }
+}

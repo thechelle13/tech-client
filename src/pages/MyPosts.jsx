@@ -57,18 +57,33 @@ export const MyPosts = ({ setToken, token }) => {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">My Posts</h1>
+
+      <div className="input-field border p-2 mx-auto">
+          <input
+           
+            type="text"
+            placeholder="Search by description..."
+            // value={searchQuery}
+            // onChange={handleSearchChange}
+            autoComplete="off"
+          />
+        </div>
+        
       <div>
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
             <div className="bg-gray-100 rounded-md p-4 mb-4" key={post.id}>
               <div className="flex justify-between items-center mb-2">
                 <div className="text-xl font-semibold">Title: {post.title}</div>
+                <div className="text-xl font-semibold">Affliate: {post.affliate}</div>
                 <div className="text-gray-500">
                   Publication Date: {post.publication_date}
                 </div>
               </div>
+              <div className="card-body">
+                <img className="post-image" src={post.image_url} alt="example" width="400px" />
               <div className="mb-4">{post.content}</div>
-  
+              </div>
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-gray-500">
