@@ -43,7 +43,7 @@ export const EditPostForm = ({token, setToken}) => {
 
   const updateArea = (e) => {
     const copy = { ...post };
-    copy.area = { id: e.target.value }; // Make sure to set the 'id' property
+    copy.area = { id: e.target.value }; 
     // copy.area = e.target.value;
     setPost(copy);
   };
@@ -65,6 +65,7 @@ export const EditPostForm = ({token, setToken}) => {
       approved: true,
       area: post.area.id,
       tech_user: post.tech_user.user.id,
+      skills: post.skills.map((skill) => skill.id),
     };
   
     
@@ -158,6 +159,25 @@ export const EditPostForm = ({token, setToken}) => {
               </div>
             </fieldset>
 
+            <div className="form-field">
+  <label className="block font-bold" htmlFor="content">
+    Skills:
+  </label>
+  <div className="flex flex-wrap">
+    {post.skills && post.skills.length > 0 ? (
+      post.skills.map((skill, index) => (
+        <div key={index} className="mb-2 mr-2">
+          {skill.label}
+          {index !== post.skills.length - 1 && <span className="mx-2">•</span>}
+        </div>
+      ))
+    ) : (
+      <p>No skills available</p>
+    )}
+  </div>
+</div>
+
+           
           </fieldset>        
              
         </div>
