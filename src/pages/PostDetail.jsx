@@ -33,26 +33,29 @@ export const PostDetail = () => {
   };
 //debugger
 
-  const saveNewSkills = async (event) => {
+const saveNewSkills = async (event) => {
+  try {
     event.preventDefault();
 
     const postCopy = { ...post };
 
+    // Only update the skills field
     postCopy.skills = Array.from(selectedSkills);
 
+    // Include required fields without changing their values
     const updatedPost = {
-      title: postCopy.title,
-      content: postCopy.content,
-      image_url: postCopy.image_url,
-      affliate: postCopy.affliate,
-      approved: postCopy.approved,
-      area: postCopy.area.id,
+      title: postCopy.title || "", // Use current value or an empty string
+      content: postCopy.content || "", // Use current value or an empty string
+      image_url: postCopy.image_url || "", // Use current value or an empty string
+      affliate: postCopy.affliate || "", // Use current value or an empty string
+      approved: postCopy.approved || "", // Use current value or an empty string
+      area: postCopy.area ? postCopy.area.id : "", // Use current value or an empty string
       skills: postCopy.skills,
+      tech_user: post.tech_user.user.id,
     };
 
-    // debugger
-
-    await fetch(`http://localhost:8000/posts/${postId}`, {
+    // Use try-catch for better error handling
+    const response = await fetch(`http://localhost:8000/posts/${postId}`, {
       method: "PUT",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -61,15 +64,29 @@ export const PostDetail = () => {
       body: JSON.stringify(updatedPost),
     });
 
-    getSkills().then((skillsArray) => 
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error(`Failed to update post. Status: ${response.status}`);
+    }
 
-    // setSkills(skillsArray));
-    saveNewSkills(skillsArray));
+    // Assuming getSkills returns a Promise
+    const skillsArray = await getSkills();
 
+    // Assuming saveNewSkills takes an argument (skillsArray)
+    // and is used for some other purpose. If not, remove this line.
+    saveNewSkills(skillsArray);
+
+    // Close the modal and navigate after successful update
     manageSkills.current.close();
+    navigate(0);
+  } catch (error) {
+    console.error("Error in saveNewSkills:", error);
+    // Handle the error, e.g., display a message to the user
+  }
+};
 
-    navigate(0)
-  };
+
+
 
 
   // working
@@ -96,13 +113,15 @@ export const PostDetail = () => {
               <div className="card-title text-xl font-bold">Title: {post.title}</div>
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
-            <div className="card-body mb-4" >Image: {post.image_url}</div>
+            <div className="card-body mb-4" >Image: 
+            <img className="post-image" src={post.image_url} alt="example" width="400px" />
+            </div>
             <div className="card-body mb-4">Affliate: {post.affliate}</div>
             <div className="card-body mb-4">Content: {post.content}</div>
             <div className="card-body mb-4">Area: {post.area.label}</div>
             <div className="card-footer">
               <div className="card-skills">
-                <ul className="card-skill-header">Skills: </ul>
+                <ul className="card-skill-header">Skills:  </ul>
                 <div className="skills">
                   {post.skills.map((skill) => (
                     <li className="card-skill" key={skill.id}>

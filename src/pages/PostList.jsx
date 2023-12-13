@@ -4,25 +4,29 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const PostList = ({ setToken, token }) => {
   const [posts, setPosts] = useState({});
-  const [searchQuery, setSearchQuery] = useState("");
+
+  // const [searchQuery, setSearchQuery] = useState("");
+
   const navigate = useNavigate();
 
+  const getAndSetPosts = () => {
+    getAllPosts().then((postsArray) => {
+      const filteredPosts = postsArray.filter(
+        (post) => new Date(post.publication_date) < new Date()
+      );
+
+      const sortedPosts = filteredPosts.sort(
+        (a, b) => new Date(b.publication_date) - new Date(a.publication_date)
+      );
+
+      setPosts(sortedPosts);
+    });
+  };
+
   useEffect(() => {
-    const getAndSetPosts = async () => {
-      try {
-        const postsArray = await getAllPosts();
-        const sortedPosts = postsArray
-          .filter((post) => new Date(post.publication_date) < new Date())
-          .sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
-
-        setPosts(sortedPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
-
     getAndSetPosts();
   }, []);
+
 
   // const handleSearchChange = (e) => {
   //   setSearchQuery(e.target.value);
@@ -47,6 +51,7 @@ export const PostList = ({ setToken, token }) => {
             autoComplete="off"
           />
         </div> */}
+
         <div className="flex items-center justify-center">
       <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
         NEW POST
