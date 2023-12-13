@@ -11,6 +11,8 @@ export const PostForm = ({token, setToken}) => {
     const [post, setPost] = useState({
         title: "",
         content: "",
+        image_url: "",
+        affliate: "",
         publication_date: new Date(),
         approved: true,
         area: 0,

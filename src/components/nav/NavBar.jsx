@@ -76,7 +76,7 @@ export const NavBar = ({ token, setToken }) => {
                   {/* <Link to="/postLists" className="button is-outlined text-blue-500">
                     Posts
                   </Link> */}
-                  <Link to="/register" className="button is-link text-blue-500">
+                  <Link to="/register" className="button is-link text-white-500">
                     Register
                   </Link>
                   <Link to="/login" className="button is-outlined text-blue-500">

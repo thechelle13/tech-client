@@ -5,16 +5,17 @@ import "./forms.css";;
 import { getAreas } from "../../services/areaServices";
 
 
-export const EditPostForm = () => {
+export const EditPostForm = ({token, setToken}) => {
   const [areaLabels, setAreaLabels] = useState([]);
   const [post, setPost] = useState({
     title: "",
     image_url: "",
-    affiliate: "",
+    affliate: "",
     content: "",
     publication_date: new Date(),
     approved: true,
     area: 1,
+   
   });
 
   const { postId } = useParams();
@@ -22,17 +23,18 @@ export const EditPostForm = () => {
   let navigate = useNavigate();
   
   useEffect(() => {
+    getAreas().then((areaArray) => {
+    setAreaLabels(areaArray)
+  })
+}, []);
+
+  useEffect(() => {
     getPostById(postId).then((postObj) => {
       setPost(postObj);
     });
   }, [postId]);
 
-  useEffect(() => {
-      getAreas().then((areaArray) => {
-      setAreaLabels(areaArray)
-    })
-  }, []);
-
+  
   const updatePost = (e) => {
     const copy = { ...post };
     copy[e.target.id] = e.target.value;
@@ -41,7 +43,8 @@ export const EditPostForm = () => {
 
   const updateArea = (e) => {
     const copy = { ...post };
-    copy.area = e.target.value;
+    copy.area = { id: e.target.value }; // Make sure to set the 'id' property
+    // copy.area = e.target.value;
     setPost(copy);
   };
 
@@ -52,23 +55,25 @@ export const EditPostForm = () => {
 
   const handleSave = (event) => {
     event.preventDefault();
-
+  
     const updatedItem = {
       id: post.id, 
       title: post.title,
-      image_url: post.image,
-      affiliate: post.affiliate,
+      image_url: post.image_url,
+      affliate: post.affliate,
       content: post.content,
       approved: true,
       area: post.area.id,
-      skills: post.skills.map((skill) => skill.id),
+      tech_user: post.tech_user.user.id,
     };
-
+  
+    
+  
     editPost(updatedItem).then(() => {
       navigate(`/postLists/${postId}`);
     });
   };
-
+  
   return (
     <main className="form-parent">
       <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
@@ -86,7 +91,7 @@ export const EditPostForm = () => {
                 type="text"
                 placeholder=""
                 value={post.title}
-                required
+                
               />
             </div>
 
@@ -114,7 +119,7 @@ export const EditPostForm = () => {
                 onChange={updatePost}
                 placeholder=""
                 value={post.affliate}
-                required
+                
               />
             </div>
 
@@ -126,7 +131,7 @@ export const EditPostForm = () => {
                 onChange={updatePost}
                 placeholder=""
                 value={post.content}
-                required
+                
               />
             </div>
 
