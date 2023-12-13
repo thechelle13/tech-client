@@ -96,7 +96,7 @@ export const PostDetail = () => {
               <div className="card-title text-xl font-bold">Title: {post.title}</div>
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
-            <div className="card-body mb-4">Image: {post.image_url}</div>
+            <div className="card-body mb-4" >Image: {post.image_url}</div>
             <div className="card-body mb-4">Affliate: {post.affliate}</div>
             <div className="card-body mb-4">Content: {post.content}</div>
             <div className="card-body mb-4">Area: {post.area.label}</div>

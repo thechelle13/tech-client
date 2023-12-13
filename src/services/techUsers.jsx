@@ -1,12 +1,33 @@
-export const getTechUser = (id) => {
-    return fetch(`http://localhost:8000/techusers/${id}`,
+  export const getTechUser = () => {
+    return fetch(`http://localhost:8000/users/techusers`, {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("auth_token")}`,
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
+  };
+
+  export const editTechUser = (techuserId) => {
+    return fetch(`http://localhost:8000/users/techusers/${techuserId}`,
     {
-        method: "GET",
+        method: "PUT",
         headers: {
             Authorization: `Token ${localStorage.getItem("auth_token")}`,
             "Content-Type": "application/json"
-        }
-      }).then((res) => res.json())
-  }
+        },
+            body: JSON.stringify(techuserId)
+        })
+    }
+
+    export const deleteTechUser = (techuserId) => {
+        return fetch(`http://localhost:8000/users/techusers/${techuserId}`, 
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("auth_token")}`,
+            },
+        })
+    }
 
   

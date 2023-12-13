@@ -9,6 +9,7 @@ export const MyPosts = ({ setToken, token }) => {
   const navigate = useNavigate();
 
   const getAndSetMyPosts = async () => {
+    
     try {
       const postsArray = await getAllPosts();
       const filteredArray = postsArray.filter((post) => post.is_owner === true);
@@ -57,7 +58,7 @@ export const MyPosts = ({ setToken, token }) => {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">My Posts</h1>
-
+{/* 
       <div className="input-field border p-2 mx-auto">
           <input
            
@@ -67,7 +68,7 @@ export const MyPosts = ({ setToken, token }) => {
             // onChange={handleSearchChange}
             autoComplete="off"
           />
-        </div>
+        </div> */}
         
       <div>
         {myPosts && myPosts.length ? (

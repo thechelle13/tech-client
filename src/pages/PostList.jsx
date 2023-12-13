@@ -37,7 +37,7 @@ export const PostList = ({ setToken, token }) => {
     <>
       <div className="text-3xl font-semibold mb-4 text-center">All Posts</div>
       
-      <div className="input-field border p-2 mx-auto">
+      {/* <div className="input-field border p-2 mx-auto">
           <input
            
             type="text"
@@ -46,7 +46,7 @@ export const PostList = ({ setToken, token }) => {
             // onChange={handleSearchChange}
             autoComplete="off"
           />
-        </div>
+        </div> */}
         <div className="flex items-center justify-center">
       <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
         NEW POST
