@@ -13,6 +13,20 @@ export const PostDetail = () => {
 
   const manageSkills = useRef();
 
+  const handleContact = () => {
+    // Assuming post has an email property. Adjust accordingly.
+    const email = post.tech_user.user.email;
+
+    if (email) {
+      // Open a new window or modal with a mailto link
+      window.open(`mailto:${email}`, "_blank");
+    } else {
+      console.error("No email found for the poster");
+      // Handle the case where no email is available
+    }
+  };
+
+
   useEffect(() => {
     getSkills().then((skillsArray) => setSkills(skillsArray));
   }, []);
@@ -136,7 +150,7 @@ const saveNewSkills = async (event) => {
           <p>No post found.</p>
         )}
          <div>
-          <button>Contact</button>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300" onClick={handleContact}>Contact</button>
         </div>
       </div>
       {post?.is_owner ? (
