@@ -125,7 +125,7 @@ When they select the Create Skill button
 Then they should be directed to a form to enter a new Skill name
 When the user enters a Skill name and clicks Save, a new Skill is saved to the database.
 
-
+![Alt text](image-1.png)
 
 
 
