@@ -58,18 +58,7 @@ export const MyPosts = ({ setToken, token }) => {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">My Posts</h1>
-{/* 
-      <div className="input-field border p-2 mx-auto">
-          <input
-           
-            type="text"
-            placeholder="Search by description..."
-            // value={searchQuery}
-            // onChange={handleSearchChange}
-            autoComplete="off"
-          />
-        </div> */}
-        
+
       <div>
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
@@ -82,7 +71,11 @@ export const MyPosts = ({ setToken, token }) => {
                 </div>
               </div>
               <div className="card-body">
-                <img className="post-image" src={post.image_url} alt="example" width="400px" />
+
+
+                {/* <img className="post-image" src={post.image_url} alt="example" width="400px" /> */}
+
+
               <div className="mb-4">{post.content}</div>
               </div>
               <div className="flex items-center justify-between">

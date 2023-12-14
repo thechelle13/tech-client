@@ -96,10 +96,10 @@ export const PostForm = ({token, setToken}) => {
             <div className="form-container">
               <fieldset className="form-fieldset space-y-4">
                 <div className="form-field">
-                  <label className="block font-bold">New Post:</label>
+                 
                 </div>
                 <div className="form-field">
-                  <label className="block font-bold">Title:</label>
+                  <label className="block font-bold"  htmlFor="title">Title:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
                     id="title"
@@ -112,7 +112,7 @@ export const PostForm = ({token, setToken}) => {
                   <p className="text-sm text-gray-600">Max Characters: 20</p>
                 </div>
                 <div className="form-field">
-                  <label className="block font-bold">Content:</label>
+                  <label className="block font-bold"  htmlFor="content">Content:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
                     id="content"
@@ -125,7 +125,7 @@ export const PostForm = ({token, setToken}) => {
                   <p className="text-sm text-gray-600">Max Characters: 200</p>
                 </div>
                 <div className="form-field">
-                  <label className="block font-bold">Affliate:</label>
+                  <label className="block font-bold"  htmlFor="affliate">Affliate:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
                     id="affliate"
@@ -139,12 +139,12 @@ export const PostForm = ({token, setToken}) => {
                 </div>
 
                 <div className="form-field">
-                  <label className="block font-bold">Image:</label>
+                  <label className="block font-bold" htmlFor="image_url">Image:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
                     id="image_url"
                     onChange={updatePost}
-                    placeholder="Image"
+                    placeholder="http://"
                     value={post.image_url}
                     required
                     maxLength={200}
@@ -154,13 +154,14 @@ export const PostForm = ({token, setToken}) => {
       
                 <fieldset className="fieldset-div space-y-4">
                   <div className="skills-group">
-                    <div className="skills-label font-bold">Skills:</div>
+                    <div className="skills-label font-bold"  >Skills:</div>
                     <div className="skills grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                       {skillLabels.map((s) => (
                         <div key={s.id}>
                           <label className="flex items-center">
                             <input
                               type="checkbox"
+                              id={`skill-${s.id}`}
                               checked={chosenSkills.has(s.id)}
                               onChange={() => updateSkill(s)}
                             />
@@ -175,10 +176,10 @@ export const PostForm = ({token, setToken}) => {
 
                 <fieldset className="fieldset-div space-y-4 flex items-center justify-center">
               <div className="box-input">
-              <label className="block font-bold">Area:</label>
+              <label className="block font-bold"  htmlFor="area">Area:</label>
                 <select
                   className="input border p-2 w-full"
-                  name="area"
+                  id="area"
                   onChange={updateArea}
                   value={post.area.id}
                 >
