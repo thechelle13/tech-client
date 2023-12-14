@@ -109,7 +109,7 @@ const handleDeleteClick = (techuserId) => {
       </div>
 
     <img className="app-logo mx-auto mb-4" src={derekImage} alt="Good job Derek" />
-    <img className="app-logo mx-auto mb-4" src={steveImage} alt="Good job Steve" />
+    {/* <img className="app-logo mx-auto mb-4" src={steveImage} alt="Good job Steve" /> */}
     <img className="app-logo mx-auto mb-4" src={valImage} alt="Good job Val" />
 
     <div>A platform designed to connect employers with tech talent efficiently.</div>
