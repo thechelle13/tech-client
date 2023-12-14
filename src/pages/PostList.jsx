@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const PostList = ({ setToken, token }) => {
   const [posts, setPosts] = useState({});
+  const [mostWantedSkill, setMostWantedSkill] = useState("");
 
   // const [searchQuery, setSearchQuery] = useState("");
 
@@ -18,6 +19,21 @@ export const PostList = ({ setToken, token }) => {
       const sortedPosts = filteredPosts.sort(
         (a, b) => new Date(b.publication_date) - new Date(a.publication_date)
       );
+
+
+      //  Update most wanted skill
+      let skillsCount = {};
+      sortedPosts.forEach((post) => {
+        post.skills.forEach((skill) => {
+          skillsCount[skill.label] = (skillsCount[skill.label] || 0) + 1;
+        });
+      });
+
+      const mostWantedSkill = Object.keys(skillsCount).reduce((a, b) =>
+        skillsCount[a] > skillsCount[b] ? a : b
+      );
+
+      setMostWantedSkill(mostWantedSkill);
 
       setPosts(sortedPosts);
     });
@@ -52,6 +68,12 @@ export const PostList = ({ setToken, token }) => {
           />
         </div> */}
 
+
+        <div className="flex justify-between items-center mb-4">
+        <div className="text-xl font-bold mb-4 text-blue-500">Most Wanted Skill Today: {mostWantedSkill}</div>
+
+       
+      </div>
         <div className="flex items-center justify-center">
       <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
         NEW POST
