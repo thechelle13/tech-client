@@ -44,9 +44,9 @@ npm start
 Access the application in your web browser at http://localhost:3000.
 
 
-Difficulties and Challenges Faced During Process:
+Difficulties and Challenges Faced During Process:   
 
-Throughout the development process, several challenges were encountered, including user authentication, database design, and form handling. These challenges were addressed and resolved to ensure a robust and user-friendly application.
+During the development phase, I encountered various challenges, such as issues with user authentication, database design complexities, and handling forms effectively.  Additionally, accessing tech_user information became a challenge, especially for displaying information on the Home page. Editing a post was successful early but following the introduction of a new resource (area) after the production phase caused errors in edit of a Post until all addressed. 
 
 **Public Links:**
 
