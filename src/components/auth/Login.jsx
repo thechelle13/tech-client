@@ -29,12 +29,12 @@ export const Login = ({ setToken }) => {
 
   return (
     <section className="flex justify-center">
-      <form className="column bg-white rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleLogin}>
-        <h1 className="text-3xl font-bold mb-4">TechPower</h1>
-        <p className="text-lg mb-4">Please sign in</p>
+      <form className="column bg-blue-300 rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleLogin}>
+        <h1 className="text-5xl font-bold mb-4 text-white">TechPower</h1>
+        <p className="text-lg mb-4 text-white">Please sign in</p>
 
         <div className="field">
-          <label className="label">Username</label>
+          <label className="label text-white">Username</label>
           <div className="control">
             <input  className="input rounded-md shadow-sm w-full py-2 px-4" 
                     type="text" 
@@ -56,7 +56,9 @@ export const Login = ({ setToken }) => {
 
         <div className="flex justify-between mb-4">
           <div className="control">
-            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit" >Submit</button>
+          {/* <button className="button bg-white text-blue-500 hover:bg-blue-700" type="submit"> */}
+            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit" >
+              Submit</button>
           </div>
           <div className="control">
             <Link to="/register" className="button is-link is-light">Cancel</Link>
