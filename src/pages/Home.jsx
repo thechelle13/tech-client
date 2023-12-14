@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import steveImage from '../assets/steve.png';
+import derekImage from '../assets/Derek.png';
+import valImage from '../assets/val.png';
 import { deleteTechUser, getTechUser } from "../services/techUsers";
 import { useParams } from "react-router-dom";
 import Clock from "../components/utils/HumanClock";
@@ -50,15 +52,8 @@ const handleDeleteClick = (techuserId) => {
     <main className="flex flex-col items-center h-screen bg-gray-100">
   <div className="text-center mb-8">
     <h1 className="text-4xl font-bold mb-4 text-blue-500">Welcome to TechPower</h1>
-    <div></div>
-    <img className="app-logo mx-auto mb-4" src={steveImage} alt="Good job Steve" />
 
-    <div>A platform designed to connect employers with tech talent efficiently.</div>
-  </div>
-  <div></div>
-  <Clock />
-  <div></div>
-  <div className="user-info-container text-center bg-gray-200 p-4 rounded-md">
+    <div className="user-info-container text-center bg-gray-200 p-4 rounded-md">
         <h2 className="text-2xl font-bold mb-2 text-blue-800">
         <div className="pb-card-user" key={techUser.user.id}>
              {'Welcome, '} {techUser.user.first_name} {techUser.user.last_name}
@@ -112,6 +107,18 @@ const handleDeleteClick = (techuserId) => {
         <button className="bg-red-500 text-white px-4 py-2 rounded-md"
           onClick={() => handleDeleteClick()} >Delete</button> */}
       </div>
+
+    <img className="app-logo mx-auto mb-4" src={derekImage} alt="Good job Derek" />
+    <img className="app-logo mx-auto mb-4" src={steveImage} alt="Good job Steve" />
+    <img className="app-logo mx-auto mb-4" src={valImage} alt="Good job Val" />
+
+    <div>A platform designed to connect employers with tech talent efficiently.</div>
+    <Clock />
+  </div>
+ 
+
+ 
+  
     </main>
   );
 }

@@ -106,7 +106,7 @@ export const PostList = ({ setToken, token }) => {
                       <div>Skills: </div>
                       <div className="skill-div">
                         {post.skills.map((skill) => (
-                          <div className="skill-label" key={skill.id}>
+                          <div className="skill-label bg-blue-500 text-white" key={skill.id}>
                             {skill.label}
                           </div>
                         ))}
@@ -123,7 +123,7 @@ export const PostList = ({ setToken, token }) => {
                 <div className="post-footer">
                     <div className="post-skill-container">
                       <div>Area: </div>
-                      <div className="skill-div">
+                      <div className="skill-label bg-blue-800 text-white">
                         {post.area.label}
                       </div>
                     </div>
