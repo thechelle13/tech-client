@@ -4,7 +4,7 @@ import { deleteTechUser, getTechUser, editTechUser } from "../../services/techUs
 import "./forms.css";
 
 export const EditUserForm = () => {
-  const { techuserId } = useParams();
+  const { userId } = useParams();
 
   const [techUser, setTechUser] = useState({
     user: {
@@ -17,8 +17,8 @@ export const EditUserForm = () => {
   });
 
   console.log("techuserId:", techuserId);
-//   console.log("techUser:", techUser);
-//   console.log("user:", techUser.user);
+  console.log("techUser:", techUser);
+  console.log("user:", techUser.user);
 
 
   const navigate = useNavigate();
