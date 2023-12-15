@@ -3,8 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllPosts } from "../services/postServices";
 
 
-
-
 export const PostList = ({ setToken, token }) => {
   const [posts, setPosts] = useState([]);
   const [mostWantedSkill, setMostWantedSkill] = useState("");
@@ -71,9 +69,21 @@ export const PostList = ({ setToken, token }) => {
   };
 
   // Filter posts based on search query
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter posts based on search query
+  const filteredPosts = posts.filter((post) => {
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    const lowerCaseTitle = post.title.toLowerCase();
+    const lowerCaseContent = post.content.toLowerCase(); // Assuming there's a content field
+
+    // Check if the search query is present in the title, content, or other relevant fields
+    return (
+      lowerCaseTitle.includes(lowerCaseSearchQuery) ||
+      lowerCaseContent.includes(lowerCaseSearchQuery) ||
+      // Include other fields as needed
+      // For example, you might want to include the author's username
+      post.tech_user.user.username.toLowerCase().includes(lowerCaseSearchQuery)
+    );
+  });
 
   return (
     <>
@@ -103,11 +113,11 @@ export const PostList = ({ setToken, token }) => {
   <div className="input-field flex items-center border p-2">
     <input
       type="text"
-      placeholder="Search by title..."
+      placeholder="Search ..."
       value={searchQuery}
       onChange={handleSearchChange}
       autoComplete="off"
-      className="mx-auto" 
+      className="w-full p-2 mx-auto" 
       id="searchInput"
     />
   </div>
