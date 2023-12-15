@@ -127,21 +127,17 @@ const saveNewSkills = async (event) => {
               <div className="card-title text-xl font-bold">Title: {post.title}</div>
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
-            <div className="card-body mb-4" >Image: 
 
 
-            {/* <img className="post-image" src={post.image_url} alt="example" width="400px" /> */}
-
-            {/* <img
+            <div className="card-body mb-4" >Image:
+            <img
                 className="post-image"
-                src={post.image_url || "/assets/cybericon.png"} 
-                alt="nophoto"
+                src={post.image_url} 
+                alt="no photo available"
                 width="400px"
-              /> */}
+              />
 
             </div>
-
-            
 
 
             <div className="card-body mb-4">Affliate: {post.affliate}</div>

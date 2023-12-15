@@ -73,7 +73,7 @@ export const MyPosts = ({ setToken, token }) => {
               <div className="card-body">
 
 
-                {/* <img className="post-image" src={post.image_url} alt="example" width="400px" /> */}
+                <img className="post-image" src={post.image_url} alt="example" width="400px" />
 
 
               <div className="mb-4">{post.content}</div>
