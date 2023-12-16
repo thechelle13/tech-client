@@ -4,30 +4,31 @@ import { deleteTechUser, getTechUser, editTechUser } from "../../services/techUs
 import "./forms.css";
 
 export const EditUserForm = () => {
+  const { techuserId } = useParams();
   const { userId } = useParams();
+
+//   const userId = parseInt(techuserId, 10);
 
   const [techUser, setTechUser] = useState({
     user: {
-      id: "",
       first_name: "",
       last_name: "",
       email: "",
-    //   bio: "",
+      username: "",
     },
   });
 
-  console.log("techuserId:", techuserId);
-  console.log("techUser:", techUser);
-  console.log("user:", techUser.user);
+//   console.log("techuserId:", techuserId);
+
 
 
   const navigate = useNavigate();
 
   useEffect(() => {
     getTechUser(techuserId).then((techuserObj) => {
-      setTechUser(techuserObj); 
+      setTechUser(techuserObj);
     });
-  }, [techuserId]);
+  }, [techuserId, userId]);
   
 
   const updateTech = (e) => {
@@ -42,18 +43,25 @@ export const EditUserForm = () => {
   };
 
   const handleSaveClick = () => {
+    // e.preventDefault()
+
     const updatedTechUser = {
-      user: {
-        id: techUser.user.id,
+        
+        // id: techUser.user.id,
         first_name: techUser.user.first_name,
         last_name: techUser.user.last_name,
         email: techUser.user.email,
-      },
-    //   bio: techUser.bio,
+        username: techUser.user.username,
+      
     };
+     console.log("techuserId:", techuserId);
+    console.log("userId:", userId);
+    console.log("updatedTechUser:", updatedTechUser);
 
-    editTechUser(techuserId, updatedTechUser).then(() => {
-      navigate(`/edit-user/${techuserId}`);
+
+
+    editTechUser(parseInt(techuserId), updatedTechUser).then(() => {
+      navigate(`/`);
     });
   };
 
@@ -124,22 +132,22 @@ export const EditUserForm = () => {
 
        
       {/* <div className="form-field">
-        <label className="block font-bold mb-1" htmlFor="bio">
-          Bio:
+        <label className="block font-bold mb-1" htmlFor="username">
+          Username:
         </label>
         <textarea
                 className="textarea-field border p-2 w-full"
-                id="bio"
+                id="username"
                 onChange={(e) => updateTech(e)}
                 placeholder=""
-                value={techUser.bio}
+                value={techUser.user.username}
               />
       </div> */}
 
       <div className="flex justify-center space-x-4">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          onClick={() => handleSaveClick()}
+          onClick={handleSaveClick}
         >
           Save Changes
         </button>
