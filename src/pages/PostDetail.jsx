@@ -128,8 +128,22 @@ const saveNewSkills = async (event) => {
               <div className="card-author">Author: {post.tech_user.user.username}</div>
             </div>
             <div className="card-body mb-4" >Image: 
-            <img className="post-image" src={post.image_url} alt="example" width="400px" />
+
+
+            {/* <img className="post-image" src={post.image_url} alt="example" width="400px" /> */}
+
+            {/* <img
+                className="post-image"
+                src={post.image_url || "/assets/cybericon.png"} 
+                alt="nophoto"
+                width="400px"
+              /> */}
+
             </div>
+
+            
+
+
             <div className="card-body mb-4">Affliate: {post.affliate}</div>
             <div className="card-body mb-4">Content: {post.content}</div>
             <div className="card-body mb-4">Area: {post.area.label}</div>
@@ -171,6 +185,7 @@ const saveNewSkills = async (event) => {
                 <div key={skill.id} className="mb-2">
                   <input
                     type="checkbox"
+                    id={`skill-${skill.id}`}
                     checked={selectedSkills.has(skill.id)}
                     onChange={() => handleSelectedSkill(skill)}
                   />

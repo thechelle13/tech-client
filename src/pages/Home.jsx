@@ -10,6 +10,11 @@ import Clock from "../components/utils/HumanClock";
 export const Home = ({token, setToken}) => {
 const techuserId = useParams()
 const [techUser, setTechUser] = useState({user: {}});
+const [editedUser, setEditedUser] = useState({
+  first_name: '',
+  last_name: '',
+  bio: '',
+});
 
 const getAndSetTechUser = () => {
   getTechUser().then((techUser) => {
@@ -21,29 +26,37 @@ useEffect(() => {
   getAndSetTechUser();
 }, []); 
 
+const handleClearClick = () => {
+  setEditedUser({
+    first_name: '',
+    last_name: '',
+    bio: '',
+  });
+};
+
 const handleDeleteClick = (techuserId) => {
   const confirmDelete = window.confirm(
     "Are you sure you want to delete this Profile?"
   );
   if (confirmDelete) {
+
     deleteTechUser(techuserId).then(() => {
       getAndSetTechUser();
 
-      // navigate to login in or register?
-
-      // if (confirmDelete) {
-      //   try {
-      //     await deletePost(postToDelete.id);
-      //     // Update the state immediately after successful deletion
-      //     setMyPosts((prevPosts) =>
-      //       prevPosts.filter((post) => post.id !== postToDelete.id)
-      //     );
-      //   } catch (error) {
-      //     console.error("Error deleting post:", error);
-      //   } finally {
-      //     setPostToDelete(null);
-      //   }
-      // }
+  //     const handleDeleteClick = async () => {
+  //   const confirmDelete = window.confirm("Are you sure you want to delete this profile?");
+  //   if (confirmDelete) {
+  //     try {
+  //       await deleteTechUser(techuserId);
+  //       // Perform any additional cleanup or actions after successful deletion
+  //       // For example, you might want to redirect the user or update the UI
+  //       getAndSetTechUser();
+  //     } catch (error) {
+  //       console.error("Error deleting tech user:", error);
+  //       // Handle the error, display a message, or perform any necessary actions
+  //     }
+  //   }
+  // };
     });
   }
 };
@@ -51,62 +64,75 @@ const handleDeleteClick = (techuserId) => {
   return (
     <main className="flex flex-col items-center h-screen bg-gray-100">
   <div className="text-center mb-8">
-    <h1 className="text-4xl font-bold mb-4 text-blue-500">Welcome to TechPower</h1>
+    <h1 className="text-7xl font-bold mb-4 text-blue-500">Welcome to TechPower</h1>
 
     <div className="user-info-container text-center bg-gray-200 p-4 rounded-md">
-        <h2 className="text-2xl font-bold mb-2 text-blue-800">
+      <h2 className="text-2xl font-bold mb-2 text-blue-800">
         <div className="pb-card-user" key={techUser.user.id}>
-             {'Welcome, '} {techUser.user.first_name} {techUser.user.last_name}
-             
-            </div>
-            
-        </h2>  
+          {techUser.user.first_name} {techUser.user.last_name}
+        </div>
+      </h2>
 
-        {/* <fieldset className="mb-4" >
-          <label className="block font-bold mb-1" key={techUser.user.id}>First Name:</label>
-          <input
-            type="text"
-            className="border p-2 w-full"
-            value={techUser.user.first_name || "First Name"}
-            readOnly
-          />
-        </fieldset> */}
+      <fieldset className="mb-4">
+        <label className="block font-bold mb-1" htmlFor="firstName">
+          First Name:
+        </label>
+        <input
+          id="firstName"
+          type="text"
+          className="border p-2 w-full"
+          value={editedUser.first_name }
+          onChange={(e) => handleInputChange('first_name', e.target.value)}
+        />
+      </fieldset>
 
-        {/* <div className="form-field">
-              <label className="block font-bold" htmlFor="affliate">Affliate:</label>
-              <textarea
-                className="textarea-field border p-2 w-full"
-                id="affliate"
-                onChange={updatePost}
-                placeholder=""
-                value={post.affliate}
-                required
-              />
-            </div> */}
+      <fieldset className="mb-4">
+        <label className="block font-bold mb-1" htmlFor="lastName">
+          Last Name:
+        </label>
+        <input
+          id="lastName"
+          type="text"
+          className="border p-2 w-full"
+          value={editedUser.last_name }
+          onChange={(e) => handleInputChange('last_name', e.target.value)}
+        />
+      </fieldset>
 
-        {/* <fieldset className="mb-4">
-          <label className="block font-bold mb-1" key={techUser.user.id}>Last Name:</label>
-          <input
-            type="text"
-            className="border p-2 w-full"
-            value={techUser.user.last_name || "Last Name"}
-            readOnly
-          />
-        </fieldset> */}
+      <fieldset className="mb-4">
+        <label className="block font-bold mb-1" htmlFor="bio">
+          Bio:
+        </label>
+        <textarea
+          id="bio"
+          className="border p-2 w-full"
+          value={editedUser.bio }
+          onChange={(e) => handleInputChange('bio', e.target.value)}
+        />
+      </fieldset>
 
-        {/* <fieldset className="mb-4">
-          <label className="block font-bold mb-1" key={techUser.user.id}>Bio:</label>
-          <textarea
-            className="border p-2 w-full"
-            value={techUser.user.bio || "Bio"}
-            readOnly
-          />
-        </fieldset> */}
-
-        {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4">Edit</button>
-        <button className="bg-red-500 text-white px-4 py-2 rounded-md"
-          onClick={() => handleDeleteClick()} >Delete</button> */}
+      <div>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4"
+          onClick={() => handleSaveClick()}
+        >
+          Edit
+        </button>
+        <button
+          className="bg-gray-500 text-white px-4 py-2 rounded-md mx-auto mb-4"
+          onClick={handleClearClick}
+        >
+          Clear
+        </button>
       </div>
+      <button
+        className="bg-red-500 text-white px-4 py-2 rounded-md"
+        onClick={() => handleDeleteClick()}
+      >
+        Delete Profile
+      </button>
+    </div>
+  
 
     <img className="app-logo mx-auto mb-4" src={derekImage} alt="Good job Derek" />
     {/* <img className="app-logo mx-auto mb-4" src={steveImage} alt="Good job Steve" /> */}
@@ -115,10 +141,6 @@ const handleDeleteClick = (techuserId) => {
     <div>A platform designed to connect employers with tech talent efficiently.</div>
     <Clock />
   </div>
- 
-
- 
-  
     </main>
   );
 }
