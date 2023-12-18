@@ -108,6 +108,7 @@ export const PostList = ({ setToken, token }) => {
       onChange={handleSearchChange}
       autoComplete="off"
       className="mx-auto" 
+      id="searchInput"
     />
   </div>
 </div>

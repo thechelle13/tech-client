@@ -73,64 +73,8 @@ const handleDeleteClick = (techuserId) => {
         </div>
       </h2>
 
-      <fieldset className="mb-4">
-        <label className="block font-bold mb-1" htmlFor="firstName">
-          First Name:
-        </label>
-        <input
-          id="firstName"
-          type="text"
-          className="border p-2 w-full"
-          value={editedUser.first_name }
-          onChange={(e) => handleInputChange('first_name', e.target.value)}
-        />
-      </fieldset>
-
-      <fieldset className="mb-4">
-        <label className="block font-bold mb-1" htmlFor="lastName">
-          Last Name:
-        </label>
-        <input
-          id="lastName"
-          type="text"
-          className="border p-2 w-full"
-          value={editedUser.last_name }
-          onChange={(e) => handleInputChange('last_name', e.target.value)}
-        />
-      </fieldset>
-
-      <fieldset className="mb-4">
-        <label className="block font-bold mb-1" htmlFor="bio">
-          Bio:
-        </label>
-        <textarea
-          id="bio"
-          className="border p-2 w-full"
-          value={editedUser.bio }
-          onChange={(e) => handleInputChange('bio', e.target.value)}
-        />
-      </fieldset>
-
-      <div>
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4"
-          onClick={() => handleSaveClick()}
-        >
-          Edit
-        </button>
-        <button
-          className="bg-gray-500 text-white px-4 py-2 rounded-md mx-auto mb-4"
-          onClick={handleClearClick}
-        >
-          Clear
-        </button>
-      </div>
-      <button
-        className="bg-red-500 text-white px-4 py-2 rounded-md"
-        onClick={() => handleDeleteClick()}
-      >
-        Delete Profile
-      </button>
+     <button>Edit Profile?</button> 
+     
     </div>
   
 
