@@ -14,13 +14,13 @@ export const PostList = ({ setToken, token }) => {
     getAllPosts().then((postsArray) => {
       const currentDate = new Date();
       const filteredPosts = postsArray.filter(
-        (post) => new Date(post.publication_date) < new Date()
+        (post) => new Date(post.publication_date) < currentDate
       );
-
+  
       const sortedPosts = filteredPosts.sort(
         (a, b) => new Date(b.publication_date) - new Date(a.publication_date)
       );
-
+  
       // Update most wanted skill
       let skillsCount = {};
       sortedPosts.forEach((post) => {
@@ -37,16 +37,14 @@ export const PostList = ({ setToken, token }) => {
             )
           : "";
       setMostWantedSkill(mostWantedSkill);
-
+  
       // Update most wanted area
-      let areasCount = {};
+      const areasCount = {};
       sortedPosts.forEach((post) => {
-        if (post.areas) {
-          post.areas.forEach((area) => {
-            areasCount[area.label] = (areasCount[area.label] || 0) + 1;
-          });
-        }
+        const areaLabel = post.area ? post.area.label : null;
+        areasCount[areaLabel] = (areasCount[areaLabel] || 0) + 1;
       });
+      
       const mostWantedArea =
         Object.keys(areasCount).length > 0
           ? Object.keys(areasCount).reduce((a, b) =>
@@ -54,7 +52,7 @@ export const PostList = ({ setToken, token }) => {
             )
           : "";
       setMostWantedArea(mostWantedArea);
-
+  
       setPosts(sortedPosts);
     });
   };
@@ -99,13 +97,13 @@ export const PostList = ({ setToken, token }) => {
             <div className="text-xl font-bold mb-4 text-red-500">{mostWantedSkill}</div>
           </div>
 
-          {/* <div className="relative bg-beige-200 rounded-lg shadow-lg p-6 text-center">
+          <div className="relative bg-beige-200 rounded-lg shadow-lg p-6 text-center">
             <div className="text-xl font-bold text-blue-500">Today's</div>
             <div className="text-xl font-bold text-blue-500">Most</div>
             <div className="text-xl font-bold text-red-500">WANTED</div>
             <div className="text-lg font-bold  mb-4 text-blue-500">Area :</div>
             <div className="text-xl font-bold mb-4 text-red-500">{mostWantedArea}</div>
-          </div> */}
+          </div>
         </div>
 
         <div className="flex items-center justify-center h-full">

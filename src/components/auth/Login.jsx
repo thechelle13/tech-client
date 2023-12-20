@@ -34,19 +34,24 @@ export const Login = ({ setToken }) => {
         <p className="text-lg mb-4 text-white">Please sign in</p>
 
         <div className="field">
-          <label className="label text-white">Username</label>
+          <label className="label text-white" htmlFor="username">Username</label>
           <div className="control">
-            <input  className="input rounded-md shadow-sm w-full py-2 px-4" 
+            <input  
+                    id="username"
+                    className="input rounded-md shadow-sm w-full py-2 px-4" 
                     type="text" 
                     ref={username} 
-                    placeholder="enter your username" />
+                    placeholder="enter your username"
+                    required
+                     />
           </div>
         </div>
 
         <div className="field">
-          <label className="label">Password</label>
+          <label className="label text-white" htmlFor="password">Password</label>
           <div className="control">
-            <input 
+            <input
+            id="password" 
             className="input rounded-md shadow-sm w-full py-2 px-4" 
             type="password" 
             ref={password}

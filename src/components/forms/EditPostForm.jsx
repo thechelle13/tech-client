@@ -136,7 +136,7 @@ export const EditPostForm = ({token, setToken}) => {
               />
             </div>
 
-            <fieldset className="fieldset-div space-y-4">
+            
               <div className="box-input">
               <label className="block font-bold"  htmlFor="area">Area:</label>
                 <select
@@ -157,7 +157,7 @@ export const EditPostForm = ({token, setToken}) => {
                   })}
                 </select>
               </div>
-            </fieldset>
+         
 
             <div className="form-field">
   <label className="block font-bold" htmlFor="content">

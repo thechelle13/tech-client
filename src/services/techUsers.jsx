@@ -20,14 +20,14 @@
   //       })
   //   }
 
-  export const editTechUser = (techuserId, userData) => {
+  export const editTechUser = (techuserId) => {
     return fetch(`http://localhost:8000/users/techusers/${techuserId}`, {
       method: "PUT",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify(techuserId),
     });
   };
 

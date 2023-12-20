@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteTechUser, getTechUser, editTechUser } from "../../services/techUsers";
+import "./forms.css";
 
 export const EditUserForm = () => {
   const { techuserId } = useParams();
+
   const [techUser, setTechUser] = useState({
     user: {
       id: "",
       first_name: "",
       last_name: "",
       email: "",
-      bio: "",
+    //   bio: "",
     },
   });
+
+  console.log("techuserId:", techuserId);
+//   console.log("techUser:", techUser);
+//   console.log("user:", techUser.user);
+
 
   const navigate = useNavigate();
 
@@ -29,16 +36,27 @@ export const EditUserForm = () => {
     setTechUser(copy);
   };
 
+
   const handleCancel = () => {
     navigate("/"); 
   };
 
   const handleSaveClick = () => {
-    editTechUser(techuserId, techUser.user).then(() => {
-        navigate(`/edit-user/${techuserId}`);
+    const updatedTechUser = {
+      user: {
+        id: techUser.user.id,
+        first_name: techUser.user.first_name,
+        last_name: techUser.user.last_name,
+        email: techUser.user.email,
+      },
+    //   bio: techUser.bio,
+    };
 
+    editTechUser(techuserId, updatedTechUser).then(() => {
+      navigate(`/edit-user/${techuserId}`);
     });
   };
+
   
 
   const handleDeleteClick = () => {
@@ -57,62 +75,66 @@ export const EditUserForm = () => {
   <div className="text-center my-8">
     <h1 className="text-5xl font-semibold mb-4 text-blue-500">TechPower</h1>
 
-    <div className="user-info-container bg-gray-300 p-6 rounded-md shadow-md">
+    <fieldset className="user-info-container bg-gray-300 p-6 rounded-md shadow-md">
       <h2 className="text-xl font-semibold mb-2 text-blue-800">
-        Welcome, {techUser.user.first_name} {techUser.user.last_name}
+         {techUser.user.first_name} {techUser.user.last_name}
       </h2>
 
-      <fieldset className="mb-4">
-        <label className="block font-bold mb-1" htmlFor="firstname">
+      <div className="form-field">
+        <label className="block font-bold mb-1" htmlFor="first_name">
           First Name:
         </label>
-        <input
-          id="firstname"
-          type="text"
-          className="border p-2 w-full"
-          value={techUser.user.first_name}
-          onChange={(e) => updateTech(e)}
-        />
-      </fieldset>
+        <textarea
+                className="textarea-field border p-2 w-full"
+                id="first_name"
+                onChange={(e) => updateTech(e)}
+                type="text"
+                placeholder=""
+                value={techUser.user.first_name}
+              />
+      </div>
 
-      <fieldset className="mb-4">
+      <div className="form-field">
         <label className="block font-bold mb-1" htmlFor="last_name">
           Last Name:
         </label>
         <input
-          id="last_name"
-          type="text"
-          className="border p-2 w-full"
-          value={techUser.user.last_name}
-          onChange={(e) => updateTech(e)}
-        />
-      </fieldset>
+                className="input-field border p-2 w-full"
+                id="last_name"
+                onChange={(e) => updateTech(e)}
+                type="text"
+                placeholder=""
+                value={techUser.user.last_name}
+              />
+      </div>
 
-      <fieldset className="mb-4">
+      <div className="form-field">
         <label className="block font-bold mb-1" htmlFor="email">
             Email:
         </label>
         <input
-            id="email"
-            className="border p-2 w-full"
-            value={techUser.user.email}
-            onChange={(e) => updateTech(e)}
-            autoComplete="email"
-        />
-        </fieldset>
+                className="input-field border p-2 w-full"
+                id="email"
+                onChange={(e) => updateTech(e)}
+                type="email"
+                placeholder=""
+                value={techUser.user.email}
+              />
+        </div>
 
-
-      <fieldset className="mb-4">
+       
+      {/* <div className="form-field">
         <label className="block font-bold mb-1" htmlFor="bio">
           Bio:
         </label>
         <textarea
-          id="bio"
-          className="border p-2 w-full"
-          value={techUser.bio}
-          onChange={(e) => updateTech(e)}
-        />
-      </fieldset>
+                className="textarea-field border p-2 w-full"
+                id="bio"
+                onChange={(e) => updateTech(e)}
+                placeholder=""
+                value={techUser.bio}
+              />
+      </div> */}
 
       <div className="flex justify-center space-x-4">
         <button
@@ -135,7 +157,7 @@ export const EditUserForm = () => {
       >
         Delete Profile
       </button>
-    </div>
+    </fieldset>
   </div>
 </main>
 
