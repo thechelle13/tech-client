@@ -5,9 +5,6 @@ import "./forms.css";
 
 export const EditUserForm = () => {
   const { techuserId } = useParams();
-  const { userId } = useParams();
-
-//   const userId = parseInt(techuserId, 10);
 
   const [techUser, setTechUser] = useState({
     user: {
@@ -18,25 +15,19 @@ export const EditUserForm = () => {
     },
   });
 
-//   console.log("techuserId:", techuserId);
-
-
-
   const navigate = useNavigate();
 
   useEffect(() => {
     getTechUser(techuserId).then((techuserObj) => {
       setTechUser(techuserObj);
     });
-  }, [techuserId, userId]);
+  }, [techuserId]);
   
-
   const updateTech = (e) => {
     const copy = { ...techUser };
     copy.user[e.target.id] = e.target.value;
     setTechUser(copy);
   };
-
 
   const handleCancel = () => {
     navigate("/"); 
@@ -45,27 +36,20 @@ export const EditUserForm = () => {
   const handleSaveClick = () => {
     // e.preventDefault()
 
-    const updatedTechUser = {
-        
+    const updatedTechUser = {      
         // id: techUser.user.id,
         first_name: techUser.user.first_name,
         last_name: techUser.user.last_name,
         email: techUser.user.email,
         username: techUser.user.username,
-      
     };
-     console.log("techuserId:", techuserId);
-    console.log("userId:", userId);
+    console.log("techuserId:", techuserId);
     console.log("updatedTechUser:", updatedTechUser);
-
-
 
     editTechUser(parseInt(techuserId), updatedTechUser).then(() => {
       navigate(`/`);
     });
   };
-
-  
 
   const handleDeleteClick = () => {
     const confirmDelete = window.confirm(
@@ -73,7 +57,7 @@ export const EditUserForm = () => {
     );
     if (confirmDelete) {
       deleteTechUser(techuserId).then(() => {
-        navigate("/");
+        navigate("/Login");
       });
     }
   };
@@ -129,7 +113,6 @@ export const EditUserForm = () => {
                 value={techUser.user.email}
               />
         </div>
-
        
       {/* <div className="form-field">
         <label className="block font-bold mb-1" htmlFor="username">
@@ -168,6 +151,5 @@ export const EditUserForm = () => {
     </fieldset>
   </div>
 </main>
-
   );
 };
