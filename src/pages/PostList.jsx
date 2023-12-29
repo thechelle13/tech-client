@@ -89,44 +89,40 @@ export const PostList = ({ setToken, token }) => {
         <div className="text-3xl font-semibold mb-4 text-center">All Posts</div>
 
         <div className="flex justify-between items-center mb-4">
-          <div className="relative bg-beige-200 rounded-lg shadow-lg p-6 text-center">
-            <div className="text-xl font-bold text-blue-500">Today's</div>
-            <div className="text-xl font-bold text-blue-500">Most</div>
-            <div className="text-xl font-bold text-red-500">WANTED</div>
-            <div className="text-lg font-bold  mb-4 text-blue-500">SKILL :</div>
-            <div className="text-xl font-bold mb-4 text-red-500">{mostWantedSkill}</div>
+          <div className="relative bg-blue-200 rounded-lg shadow-lg p-6 text-center">
+            <div className="text-xl font-bold text-white mb-4">Today's most</div>
+            <div className="text-xl font-bold mb-4">WANTED</div>
+            <div className="text-lg font-bold mb-4 text-white">SKILL :</div>
+            <div className="text-xl font-bold mb-4">{mostWantedSkill}</div>
           </div>
 
-          <div className="relative bg-beige-200 rounded-lg shadow-lg p-6 text-center">
-            <div className="text-xl font-bold text-blue-500">Today's</div>
-            <div className="text-xl font-bold text-blue-500">Most</div>
-            <div className="text-xl font-bold text-red-500">WANTED</div>
-            <div className="text-lg font-bold  mb-4 text-blue-500">Area :</div>
-            <div className="text-xl font-bold mb-4 text-red-500">{mostWantedArea}</div>
+          <div className="relative bg-red-200 rounded-lg shadow-lg p-6 text-center">
+            <div className="text-xl font-bold text-white mb-4">Today's most</div>
+            <div className="text-xl font-bold mb-4">WANTED</div>
+            <div className="text-lg font-bold mb-4 text-white">Area :</div>
+            <div className="text-xl font-bold mb-4">{mostWantedArea}</div>
           </div>
         </div>
 
         <div className="flex items-center justify-center h-full">
-          
-  <div className="input-field flex items-center border p-2">
-    <input
-      type="text"
-      placeholder="Search ..."
-      value={searchQuery}
-      onChange={handleSearchChange}
-      autoComplete="off"
-      className="w-full p-2 mx-auto" 
-      id="searchInput"
-    />
-  </div>
-</div>
-
+          <div className="input-field flex items-center border p-2">
+            <input
+              type="text"
+              placeholder="Search ..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              autoComplete="off"
+              className="w-full p-2 mx-auto" 
+              id="searchInput"
+            />
+          </div>
+        </div>
 
         <div className="flex items-center justify-center">
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
-        NEW POST
-      </button>
-      </div>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto mb-4" onClick={() => navigate("/create-post")}>
+            NEW POST
+          </button>
+        </div>
 
         <div>
           {filteredPosts && filteredPosts.length ? (
@@ -140,7 +136,7 @@ export const PostList = ({ setToken, token }) => {
                       <div className="post-author">
                         Author: {post.tech_user.user.username}
                       </div>
-                      <div className="post-author">Affliate: {post.affliate}</div>
+                      <div className="post-author">Affiliate: {post.affiliate}</div>
                     </div>
 
                     <div className="post-footer">
@@ -159,13 +155,13 @@ export const PostList = ({ setToken, token }) => {
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="post-footer">
-                    <div className="post-skill-container">
-                      <div>Area: </div>
-                      <div className="skill-label bg-blue-800 text-white">
-                        {post.area && post.area.label}
+                    <div className="post-footer">
+                      <div className="post-skill-container">
+                        <div>Area: </div>
+                        <div className="skill-label bg-blue-800 text-white">
+                          {post.area && post.area.label}
+                        </div>
                       </div>
                     </div>
                   </div>
