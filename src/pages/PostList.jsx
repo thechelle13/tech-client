@@ -136,7 +136,7 @@ export const PostList = ({ setToken, token }) => {
                       <div className="post-author">
                         Author: {post.tech_user.user.username}
                       </div>
-                      <div className="post-author">Affiliate: {post.affiliate}</div>
+                      <div className="post-author">Affiliate: {post.affliate}</div>
                     </div>
 
                     <div className="post-footer">
