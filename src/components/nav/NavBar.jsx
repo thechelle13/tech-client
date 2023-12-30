@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
+import { HomeIcon, CogIcon, UserCircleIcon, DocumentTextIcon } from '@heroicons/react/solid';
+
 
 export const NavBar = ({ token, setToken }) => {
   const navigate = useNavigate();
@@ -37,18 +39,18 @@ export const NavBar = ({ token, setToken }) => {
           {token ? (
             <>
               <Link to="/" className="navbar-item text-blue-500">
-                Home
+                <HomeIcon className="w-8 h-8 mr-2" />
               </Link>
-              
+
               <Link to="/postLists" className="navbar-item text-blue-500">
-                All Posts
-              </Link>
+        <DocumentTextIcon className="w-6 h-6 mr-2" /> Posts
+      </Link>
               <Link to="/myPosts" className="navbar-item text-blue-500">
-                My Posts
-              </Link>
+        <UserCircleIcon className="w-6 h-6 mr-2" /> My Posts
+      </Link>
               <Link to="/skills" className="navbar-item text-blue-500">
-                Skill Manager
-              </Link>
+        <CogIcon className="w-6 h-6 mr-2" /> Skill Manager
+      </Link>
               {/* <Link to="/skills" className="navbar-item text-blue-500">
                 Logout
               </Link> */}
