@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteSkill, getSkills } from "../services/skillServices.jsx";
-import steveImage from '../assets/steve.png';
+// import steveImage from '../assets/steve.png';
 
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/solid';
 
@@ -40,11 +40,11 @@ export const SkillList = ({ setToken, token }) => {
   
   return (
     <div className="container mx-auto mt-8">
-      <div className="flex items-center justify-center mb-4">
+      {/* <div className="flex items-center justify-center mb-4">
         <img className="app-logo mr-4" src={steveImage} alt="Good job Steve" />
         <h1 className="text-3xl font-semibold text-center">Skills</h1>
         <img className="app-logo ml-4" src={steveImage} alt="Good job Steve" />
-      </div>
+      </div> */}
       <div className="flex items-center justify-center">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"

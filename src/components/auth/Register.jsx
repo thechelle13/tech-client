@@ -48,49 +48,49 @@ export const Register = ({setToken}) => {
         <div className="field mb-4">
           <label className="label" htmlFor="firstName">First Name</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={firstName} id="firstName" placeholder="Enter your first name" />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="text" ref={firstName} id="firstName" placeholder="Enter your first name" />
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="lastName">Last Name</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={lastName} id="lastName" placeholder="Enter your last name" />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="text" ref={lastName} id="lastName" placeholder="Enter your last name" />
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="username">Username</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="text" ref={username} id="username" placeholder="Choose a username" autoComplete="username"/>
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="text" ref={username} id="username" placeholder="Choose a username" autoComplete="username"/>
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="email">Email</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="email" ref={email} id="email" placeholder="Enter your email" autoComplete="email" />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="email" ref={email} id="email" placeholder="Enter your email" autoComplete="email" />
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="password">Password</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="password" ref={password} id="password" placeholder="Enter your password" />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="password" ref={password} id="password" placeholder="Enter your password" />
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="vpass">Verify Password</label>
           <div className="control">
-            <input className="input rounded-md shadow-sm w-full py-2 px-4" type="password" ref={verifyPassword} id="vpass" placeholder="Verify your password" />
+            <input className="input rounded-md shadow-sm w-full py-2 px-4 bg-gray-100" type="password" ref={verifyPassword} id="vpass" placeholder="Verify your password" />
           </div>
         </div>
 
         <div className="field mb-4">
           <label className="label" htmlFor="bio">Bio</label>
           <div className="control">
-            <textarea className="textarea rounded-md shadow-sm w-full py-2 px-4"
+            <textarea className="textarea rounded-md shadow-sm w-full py-2 px-4 bg-gray-100"
                       id="bio" 
                       placeholder="Tell us about yourself..." 
                       ref={bio}>
