@@ -1,5 +1,5 @@
 export const getAreas = () => {
-    return fetch(`http://localhost:8000/areas`,
+    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/areas`,
     {
         method: "GET",
         headers: {
@@ -10,7 +10,7 @@ export const getAreas = () => {
   }
 
   export const getAreaByID = (areaId) => {
-      return fetch(`http://localhost:8000/areas/${areaId}`,
+      return fetch(`https://techpower-api-lgumq.ondigitalocean.app/areas/${areaId}`,
       {
           method: "GET",
           headers: {
