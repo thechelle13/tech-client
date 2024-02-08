@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import derekImage from '../assets/Derek.png';
-import valImage from '../assets/val.png';
+// import derekImage from '../assets/Derek.png';
+// import valImage from '../assets/val.png';
 import { getTechUser } from "../services/techUsers";
 import { useNavigate } from "react-router-dom";
 import Clock from "../components/utils/HumanClock";
@@ -9,6 +9,7 @@ import Clock from "../components/utils/HumanClock";
 export const Home = ({token, setToken}) => {
   
 const [techUser, setTechUser] = useState({user: {}});
+
 const [visitCount, setVisitCount] = useState(0);
 
 let navigate = useNavigate();
@@ -47,7 +48,7 @@ useEffect(() => {
   <div className="text-center my-8">
     <h1 className="text-5xl font-semibold mb-4 text-blue-500">Welcome to TechPower</h1>
 
-    <p className="text-gray-700 mb-4">Number of people visited: {visitCount}</p>
+    {/* <p className="text-gray-700 mb-4">Number of people visited: {visitCount}</p> */}
     
     <div className="user-info-container bg-gray-300 p-6 rounded-md shadow-md">
       <h2 className="text-xl font-semibold mb-2 text-blue-800">
@@ -59,10 +60,10 @@ useEffect(() => {
       >Edit Profile</button>
     </div>
 
-    <div className="flex flex-wrap justify-center">
+    {/* <div className="flex flex-wrap justify-center">
       <img className="app-logo mx-2 my-4" src={derekImage} alt="Good job Derek" />
       <img className="app-logo mx-2 my-4" src={valImage} alt="Good job Val" />
-    </div>
+    </div> */}
 
     <p className="text-gray-700 mb-4">A platform designed to connect employers with tech talent efficiently.</p>
     

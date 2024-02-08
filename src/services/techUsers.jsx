@@ -1,5 +1,7 @@
   export const getTechUser = () => {
+    // debugger
     return fetch(`http://localhost:8000/users/techusers`, {
+      
       method: "GET",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
