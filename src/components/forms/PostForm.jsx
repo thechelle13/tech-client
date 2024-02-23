@@ -63,7 +63,7 @@ export const PostForm = ({token, setToken}) => {
     
         try {
           // Send a POST request to create a new post
-          const response = await fetch("http://localhost:8000/posts", {
+          const response = await fetch("https://techpower-app-yx7il.ondigitalocean.app/posts", {
             method: "POST",
             headers: {
               Authorization: `Token ${localStorage.getItem("auth_token")}`,
