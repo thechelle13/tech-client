@@ -3,7 +3,7 @@ export const getAreas = () => {
     {
         method: "GET",
         headers: {
-            Authorization: `Token ${localStorage.getItem("auth_token")}`,
+            Authorization: `Token ${token}`,
             "Content-Type": "application/json"
         }
       }).then((res) => res.json())
@@ -14,7 +14,7 @@ export const getAreas = () => {
       {
           method: "GET",
           headers: {
-              Authorization: `Token ${localStorage.getItem("auth_token")}`,
+            Authorization: `Token ${token}`,
               "Content-Type": "application/json"
           }
           }).then((res) => res.json())
