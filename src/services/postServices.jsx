@@ -2,7 +2,7 @@ export const getAllPosts = () => {
   return fetch(`https://techpower-app-yx7il.ondigitalocean.app/posts`, {
     method: "GET",
     headers: {
-      Authorization: `Token ${token}`,
+      Authorization: `Token ${localStorage.getItem("auth_token")}`,
       "Content-Type": "application/json",
     },
   }).then((res) => res.json());
