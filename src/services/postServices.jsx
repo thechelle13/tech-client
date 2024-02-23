@@ -1,5 +1,5 @@
 export const getAllPosts = () => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/posts`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/posts`, {
     method: "GET",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -9,7 +9,7 @@ export const getAllPosts = () => {
 };
 
 export const getPostById = (id) => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/posts/${id}`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/posts/${id}`, {
     method: "GET",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -19,7 +19,7 @@ export const getPostById = (id) => {
 };
 
 export const deletePost = (postId) => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/posts/${postId}`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/posts/${postId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -29,7 +29,7 @@ export const deletePost = (postId) => {
 };
 
 export const editPost = (updatedPost) => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/posts/${updatedPost.id}`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/posts/${updatedPost.id}`, {
     method: "PUT",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,

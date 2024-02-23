@@ -1,5 +1,5 @@
 export const loginUser = (user) => {
-    return fetch("https://techpower-api-lgumq.ondigitalocean.app/login", {
+    return fetch("https://techpower-app-yx7il.ondigitalocean.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const loginUser = (user) => {
   };
   
   export const registerUser = (newUser) => {
-    return fetch("https://techpower-api-lgumq.ondigitalocean.app/register", {
+    return fetch("https://techpower-app-yx7il.ondigitalocean.app/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

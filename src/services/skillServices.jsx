@@ -1,5 +1,5 @@
 export const getSkills = () => {
-    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/skills`, {
+    return fetch(`https://techpower-app-yx7il.ondigitalocean.app/skills`, {
       method: "GET",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -9,7 +9,7 @@ export const getSkills = () => {
   }
   
   export const getSkillsByID = (skillId) => {
-    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/skills/${skillId}`, {
+    return fetch(`https://techpower-app-yx7il.ondigitalocean.app/skills/${skillId}`, {
       method: "GET",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -19,7 +19,7 @@ export const getSkills = () => {
   }
   
   export const createSkill = (skill) => {
-    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/skills`, {
+    return fetch(`https://techpower-app-yx7il.ondigitalocean.app/skills`, {
       method: "POST",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -30,7 +30,7 @@ export const getSkills = () => {
   }
   
   export const editSkill = (skill) => {
-    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/skills/${skill.id}`, {
+    return fetch(`https://techpower-app-yx7il.ondigitalocean.app/skills/${skill.id}`, {
       method: "PUT",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -41,7 +41,7 @@ export const getSkills = () => {
   }
   
   export const deleteSkill = (skillId) => {
-    return fetch(`https://techpower-api-lgumq.ondigitalocean.app/skills/${skillId}`, {
+    return fetch(`https://techpower-app-yx7il.ondigitalocean.app/skills/${skillId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("auth_token")}`,
