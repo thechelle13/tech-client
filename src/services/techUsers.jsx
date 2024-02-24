@@ -1,5 +1,5 @@
 export const getTechUser = () => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/users/techusers`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/users/techusers`, {
     method: "GET",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -9,7 +9,7 @@ export const getTechUser = () => {
 };
 
 export const editTechUser = (techuserId, updatedTechUser) => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/users/techusers/${techuserId}`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/users/techusers/${techuserId}`, {
     method: "PUT",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
@@ -20,7 +20,7 @@ export const editTechUser = (techuserId, updatedTechUser) => {
 };
 
 export const deleteTechUser = (techuserId) => {
-  return fetch(`https://techpower-api-lgumq.ondigitalocean.app/users/techusers/${techuserId}`, {
+  return fetch(`https://techpower-app-yx7il.ondigitalocean.app/users/techusers/${techuserId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Token ${localStorage.getItem("auth_token")}`,
