@@ -33,32 +33,32 @@ export const NavBar = ({ token, setToken }) => {
       </div>
 
       <div className="navbar-menu w-full" ref={navbar}>
-        <div className="navbar-start">
-          {token && (
-            <>
-              <Link to="/" className="navbar-item text-blue-500">
-                <HomeIcon className="w-8 h-8 mr-2" />Home
-              </Link>
+        <div className="flex items-center justify-between">
+          <div className="navbar-start">
+            {token && (
+              <>
+                <Link to="/" className="navbar-item text-blue-500 mr-4">
+                  <HomeIcon className="w-8 h-8 mr-2" />Home
+                </Link>
 
-              <Link to="/postLists" className="navbar-item text-blue-500">
-                <DocumentTextIcon className="w-6 h-6 mr-2" /> Posts
-              </Link>
-              <Link to="/myPosts" className="navbar-item text-blue-500">
-                <UserCircleIcon className="w-6 h-6 mr-2" /> My Posts
-              </Link>
-              <Link to="/skills" className="navbar-item text-blue-500">
-                <CogIcon className="w-6 h-6 mr-2" /> Skill Manager
-              </Link>
-            </>
-          )}
-        </div>
+                <Link to="/postLists" className="navbar-item text-blue-500 mr-4">
+                  <DocumentTextIcon className="w-6 h-6 mr-2" /> Posts
+                </Link>
+                <Link to="/myPosts" className="navbar-item text-blue-500 mr-4">
+                  <UserCircleIcon className="w-6 h-6 mr-2" /> My Posts
+                </Link>
+                <Link to="/skills" className="navbar-item text-blue-500">
+                  <CogIcon className="w-6 h-6 mr-2" /> Skill Manager
+                </Link>
+              </>
+            )}
+          </div>
 
-        <div className="navbar-end">
-          <div className="navbar-logout">
+          <div className="navbar-end">
             <div className="buttons">
               {token ? (
                 <button
-                  className="button is-outlined text-blue-500"
+                  className="button is-outlined text-blue-500 mr-4"
                   onClick={() => {
                     setToken("");
                     navigate("/login");
@@ -68,7 +68,7 @@ export const NavBar = ({ token, setToken }) => {
                 </button>
               ) : (
                 <>
-                  <Link to="/register" className="button is-link text-white-500">
+                  <Link to="/register" className="button is-link text-white-500 mr-4">
                     Register
                   </Link>
                   <Link to="/login" className="button is-outlined text-blue-500">
