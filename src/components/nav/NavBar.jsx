@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
 import { HomeIcon, CogIcon, UserCircleIcon, DocumentTextIcon } from '@heroicons/react/solid';
 
 export const NavBar = ({ token, setToken }) => {
@@ -34,7 +33,7 @@ export const NavBar = ({ token, setToken }) => {
 
       <div className="navbar-menu w-full" ref={navbar}>
         <div className="flex items-center justify-between">
-          <div className="navbar-start">
+          <div className="navbar-start flex-grow">
             {token && (
               <>
                 <Link to="/" className="navbar-item text-blue-500 mr-4">
