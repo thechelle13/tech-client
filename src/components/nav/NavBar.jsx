@@ -13,7 +13,7 @@ export const NavBar = ({ token, setToken }) => {
   };
 
   return (
-    <nav className="navbar bg-gray-200 mb-3 rounded-md w-full" role="navigation" aria-label="main navigation">
+    <nav className="navbar mb-3 rounded-md w-full" role="navigation" aria-label="main navigation" style={{background: 'linear-gradient(to bottom, #808080, #000000)'}}>
       <div className="flex items-center justify-between px-4 py-2">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
@@ -37,17 +37,20 @@ export const NavBar = ({ token, setToken }) => {
             {token && (
               <>
                 <Link to="/" className="navbar-item text-blue-500 mr-4">
-                  <HomeIcon className="w-8 h-8 mr-2" />Home
+                  <HomeIcon className="w-8 h-8 mr-2" />
                 </Link>
 
                 <Link to="/postLists" className="navbar-item text-blue-500 mr-4">
-                  <DocumentTextIcon className="w-6 h-6 mr-2" /> Posts
+                  {/* <DocumentTextIcon className="w-6 h-6 mr-2" /> */}
+                   Posts
                 </Link>
                 <Link to="/myPosts" className="navbar-item text-blue-500 mr-4">
-                  <UserCircleIcon className="w-6 h-6 mr-2" /> My Posts
+                  {/* <UserCircleIcon className="w-6 h-6 mr-2" /> */}
+                   My Posts
                 </Link>
                 <Link to="/skills" className="navbar-item text-blue-500 mr-4">
-                  <CogIcon className="w-6 h-6 mr-2" /> Skill Manager
+                  {/* <CogIcon className="w-6 h-6 mr-2" />  */}
+                  Skill Manager
                 </Link>
               </>
             )}
