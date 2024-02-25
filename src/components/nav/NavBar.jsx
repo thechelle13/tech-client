@@ -39,7 +39,7 @@ export const NavBar = ({ token, setToken }) => {
           {token ? (
             <>
               <Link to="/" className="navbar-item text-blue-500">
-                <HomeIcon className="w-8 h-8 mr-2" />
+                <HomeIcon className="w-8 h-8 mr-2" />Home
               </Link>
 
               <Link to="/postLists" className="navbar-item text-blue-500">
