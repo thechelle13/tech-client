@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-
 import { HomeIcon, CogIcon, UserCircleIcon, DocumentTextIcon } from '@heroicons/react/solid';
 
 
@@ -17,7 +16,7 @@ export const NavBar = ({ token, setToken }) => {
 
   return  (
     <nav className="navbar bg-gray-200 mb-3 rounded-md w-full" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
+      <div className="flex items-center justify-between px-4 py-2">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           role="button"
@@ -51,9 +50,7 @@ export const NavBar = ({ token, setToken }) => {
               <Link to="/skills" className="navbar-item text-blue-500">
         <CogIcon className="w-6 h-6 mr-2" /> Skill Manager
       </Link>
-              {/* <Link to="/skills" className="navbar-item text-blue-500">
-                Logout
-              </Link> */}
+           
             </>
           ) : (
             ""
@@ -75,9 +72,6 @@ export const NavBar = ({ token, setToken }) => {
                 </button>
               ) : (
                 <>
-                  {/* <Link to="/postLists" className="button is-outlined text-blue-500">
-                    Posts
-                  </Link> */}
                   <Link to="/register" className="button is-link text-white-500">
                     Register
                   </Link>

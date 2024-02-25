@@ -92,33 +92,65 @@ a {
 
  /* Navbar.css */
 .navbar-burger {
-   @apply lg:hidden;
- }
- 
- .navbar-menu {
-   @apply lg:flex;
- }
- 
- .navbar-item {
-   @apply block lg:inline-block;
- }
- /* Navbar.css */
-.buttons {
-   @apply space-x-4;
- }
- 
- .button {
-   @apply py-2 px-4 rounded;
- }
- 
- .is-link {
-   @apply bg-blue-500 text-white;
- }
- 
- .is-outlined {
-   @apply border border-gray-300 text-gray-700;
- }
+  
+   display: none; 
+}
 
+@media (max-width: 1023px) { 
+  .navbar-burger {
+    display: block; 
+  }
+}
+
+
+.navbar-menu {
+   display: none;
+}
+
+@media (min-width: 1024px) { 
+  .navbar-menu {
+    display: flex; 
+  }
+}
+
+
+.navbar-item {
+   display: inline-block; 
+}
+
+@media (min-width: 1024px) {
+  .navbar-item {
+    display: block;
+  }
+}
+
+
+.buttons {
+   margin-right: 1rem; 
+}
+
+
+.button {
+   padding: 0.5rem 1rem; 
+   border-radius: 0.25rem; 
+   border: 1px solid transparent; 
+   transition: all 0.3s ease; 
+}
+
+.button:hover {
+   transform: scale(1.05); 
+}
+
+
+.is-link {
+   background-color: #3b82f6; 
+   color: #ffffff; 
+}
+
+.is-outlined {
+   border-color: #d1d5db; 
+   color: #374151; 
+}
  
  
  
