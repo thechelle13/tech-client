@@ -35,7 +35,7 @@ a {
 
  .navbar {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
  }
  
@@ -47,6 +47,11 @@ a {
     background-color: rgba(128, 128, 128, 0.279);
     border-radius: 10px;
     padding: 20px;
+ }
+
+ .navbar-menu.is-active {
+   display: flex;
+   justify-content: space-around;
  }
  
  .navbar-brand {
@@ -114,6 +119,6 @@ a {
    @apply border border-gray-300 text-gray-700;
  }
 
-
+ 
  
  
