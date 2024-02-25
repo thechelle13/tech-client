@@ -192,7 +192,7 @@ const saveNewSkills = async (event) => {
         </div>
        
         <div className="btn-div mt-4">
-          <button className="save-skill-btn bg-green-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
+          <button className="save-skill-btn bg-blue-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
             Save Skill Selection
           </button>
           <button className="close-skill-btn bg-gray-500 text-white px-4 py-2 rounded-md ml-2" onClick={handleCloseSkills}>

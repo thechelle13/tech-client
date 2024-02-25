@@ -86,7 +86,7 @@ export const PostList = ({ setToken, token }) => {
   return (
     <>
       <div className="container mx-auto mt-8">
-        <div className="text-3xl font-semibold mb-4 text-center">All Posts</div>
+        <div className="text-3xl text-blue-500 font-semibold mb-4 text-center">All Posts</div>
 
         <div className="flex justify-between items-center mb-4">
           <div className="relative bg-blue-200 rounded-lg shadow-lg p-6 text-center">
