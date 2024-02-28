@@ -57,7 +57,7 @@ export const MyPosts = ({ setToken, token }) => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-semibold mb-4 text-center">My Posts</h1>
+      <h1 className="text-3xl text-blue-500 font-semibold mb-4 text-center">My Posts</h1>
 
       <div>
         {myPosts && myPosts.length ? (
