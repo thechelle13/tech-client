@@ -60,14 +60,14 @@ export const Login = ({ setToken }) => {
         </div>
 
         <div className="flex justify-between mb-4">
-          <div className="control">
-          {/* <button className="button bg-white text-blue-500 hover:bg-blue-700" type="submit"> */}
-            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit" >
+         
+        
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" type="submit" >
               Submit</button>
-          </div>
-          <div className="control">
-            <Link to="/register" className="button is-link is-light">Cancel</Link>
-          </div>
+        
+       
+            <Link to="/register" className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700">Cancel</Link>
+          
         </div>
         {
           isUnsuccessful ? <p className="text-red-500 mt-4">Username or password not valid</p> : ''

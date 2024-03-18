@@ -80,7 +80,7 @@ export const PostList = ({ setToken, token }) => {
 
   return (
     <>
-      <div className="container mx-auto mt-8">
+      <div className="text-center my-8 bg-gray-400 p-6 rounded-lg shadow-lg max-w-md mx-auto">
         <div className="text-3xl text-blue-500 font-semibold mb-4 text-center">All Posts</div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -124,24 +124,24 @@ export const PostList = ({ setToken, token }) => {
             filteredPosts.map((post) => (
               <div className="bg-gray-100 rounded-md p-4 mb-4" key={post.id}>
                 <Link to={`/postLists/${post.id}`}>
-                  <div className="post-details">
-                    <div className="post-header">
-                      <div className="post-title">Title: {post.title}</div>
-                      <div className="post-date">Date: {post.publication_date}</div>
-                      <div className="post-author">
+                  <div >
+                    <div >
+                      <div className="text-xl font-semibold">Title: {post.title}</div>
+                      <div >Date: {post.publication_date}</div>
+                      <div >
                         Author: {post.tech_user.user.username}
                       </div>
-                      <div className="post-author">Affiliate: {post.affliate}</div>
+                      <div >Affiliate: {post.affliate}</div>
                     </div>
 
-                    <div className="post-footer">
-                      <div className="post-skill-container">
+                    <div >
+                      <div >
                         <div>Skills: </div>
-                        <div className="skill-div">
+                        <div >
                           {post.skills &&
                             post.skills.map((skill) => (
                               <div
-                                className="skill-label bg-blue-500 text-white"
+                                className="bg-blue-500 text-white"
                                 key={skill.id}
                               >
                                 {skill.label}
@@ -151,10 +151,10 @@ export const PostList = ({ setToken, token }) => {
                       </div>
                     </div>
 
-                    <div className="post-footer">
-                      <div className="post-skill-container">
+                    <div >
+                      <div >
                         <div>Area: </div>
-                        <div className="skill-label bg-blue-800 text-white">
+                        <div className="bg-blue-800 text-white">
                           {post.area && post.area.label}
                         </div>
                       </div>
@@ -163,7 +163,7 @@ export const PostList = ({ setToken, token }) => {
                 </Link>
 
                 {post?.is_owner ? (
-                  <div className="manage-skills-div">
+                  <div >
                     <button
                       className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
                       onClick={() => navigate(`/postList/${post.id}/edit-post`)}

@@ -63,7 +63,7 @@ export const EditUserForm = () => {
   };
 
   return (
-    <main className="flex flex-col items-center h-screen bg-gray-100">
+    <main className="text-center my-8 bg-gray-400 p-6 rounded-lg shadow-lg max-w-md mx-auto">
   <div className="text-center my-8">
     <h1 className="text-5xl font-semibold mb-4 text-blue-500">TechPower</h1>
 

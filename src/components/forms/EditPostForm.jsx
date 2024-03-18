@@ -7,6 +7,7 @@ import { getAreas } from "../../services/areaServices";
 
 export const EditPostForm = ({token, setToken}) => {
   const [areaLabels, setAreaLabels] = useState([]);
+  const [postToDelete, setPostToDelete] = useState(null);
   const [post, setPost] = useState({
     title: "",
     image_url: "",
@@ -74,10 +75,41 @@ export const EditPostForm = ({token, setToken}) => {
       navigate(`/postLists/${postId}`);
     });
   };
+
+  const handleDeleteClick = () => {
+    if (window.confirm("Are you sure you want to delete this Post?")) {
+     
+    }
+  };
+
+  useEffect(() => {
+    if (postToDelete) {
+      const handleDeleteClick = async () => {
+        const confirmDelete = window.confirm(
+          "Are you sure you want to delete this post?"
+        );
+        if (confirmDelete) {
+          try {
+            await deletePost(postToDelete.id);
+            // Update the state immediately after successful deletion
+            setMyPosts((prevPosts) =>
+              prevPosts.filter((post) => post.id !== postToDelete.id)
+            );
+          } catch (error) {
+            console.error("Error deleting post:", error);
+          } finally {
+            setPostToDelete(null);
+          }
+        }
+      };
+
+      handleDeleteClick();
+    }
+  }, [postToDelete]);
   
   return (
-    <main className="form-parent">
-      <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
+    <main >
+      <form className="form-and-header p-4 bg-gray-400 rounded shadow-md">
         <div className="h1-div mb-4">
           <h1 className="text-2xl font-bold">Edit Post Form</h1>
         </div>
@@ -137,7 +169,7 @@ export const EditPostForm = ({token, setToken}) => {
             </div>
 
             
-              <div className="box-input">
+              <div >
               <label className="block font-bold"  htmlFor="area">Area:</label>
                 <select
                   className="input border p-2 w-full"
@@ -181,15 +213,24 @@ export const EditPostForm = ({token, setToken}) => {
           </fieldset>        
              
         </div>
-        <div className="button-div mt-4">
-          <button className="button bg-blue-500 text-white" onClick={handleSave}>
-            Edit Post
+        <div className="button-div mt-4 flex space-x-4 items-center justify-center">
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            onClick={handleSave}
+          >
+            Save
           </button>
           <button
-            className="button bg-gray-500 text-white ml-2"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
             onClick={handleCancel}
           >
             Cancel
+          </button>
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"
+            onClick={handleDeleteClick}
+          >
+            Delete Post
           </button>
         </div>
       </form>

@@ -88,17 +88,17 @@ export const PostForm = ({token, setToken}) => {
       };
 
       return (
-        <main className="form-parent">
+        <main >
           <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
             <div className="h1-div mb-4">
               <h1 className="text-2xl font-bold">New Post Form</h1>
             </div>
-            <div className="form-container">
+            <div >
               <fieldset className="form-fieldset space-y-4">
-                <div className="form-field">
+                <div >
                  
                 </div>
-                <div className="form-field">
+                <div >
                   <label className="block font-bold"  htmlFor="title">Title:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
@@ -111,7 +111,7 @@ export const PostForm = ({token, setToken}) => {
                   />
                   <p className="text-sm text-gray-600">Max Characters: 20</p>
                 </div>
-                <div className="form-field">
+                <div>
                   <label className="block font-bold"  htmlFor="content">Content:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
@@ -124,7 +124,7 @@ export const PostForm = ({token, setToken}) => {
                   />
                   <p className="text-sm text-gray-600">Max Characters: 200</p>
                 </div>
-                <div className="form-field">
+                <div >
                   <label className="block font-bold"  htmlFor="affliate">Affliate:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
@@ -138,7 +138,7 @@ export const PostForm = ({token, setToken}) => {
                   <p className="text-sm text-gray-600">Max Characters: 20</p>
                 </div>
 
-                <div className="form-field">
+                <div >
                   <label className="block font-bold" htmlFor="image_url">Image:</label>
                   <textarea
                     className="textarea-field border p-2 w-full"
@@ -153,7 +153,7 @@ export const PostForm = ({token, setToken}) => {
                 </div>
       
                 <fieldset className="fieldset-div space-y-4">
-                  <div className="skills-group">
+                  <div >
                     <div className="skills-label font-bold"  >Skills:</div>
                     <div className="skills grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                       {skillLabels.map((s) => (
@@ -174,8 +174,8 @@ export const PostForm = ({token, setToken}) => {
                 </fieldset>
 
 
-                <fieldset className="fieldset-div space-y-4 flex items-center justify-center">
-              <div className="box-input">
+                <fieldset className="fieldset-div space-y-4 ">
+              <div >
               <label className="block font-bold"  htmlFor="area">Area:</label>
                 <select
                   className="input border p-2 w-full"
@@ -197,12 +197,12 @@ export const PostForm = ({token, setToken}) => {
                
               </fieldset>
             </div>
-            <div className="button-div mt-4">
-              <button className="button bg-blue-500 text-white" onClick={postPost}>
+            <div className="button-div mt-4 flex items-center justify-center">
+              <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" onClick={postPost}>
                 Add Post
               </button>
               <button
-                className="button bg-gray-500 text-white ml-2"
+                className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700"
                 onClick={() => navigate(-1)}
               >
                 Cancel

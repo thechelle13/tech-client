@@ -27,6 +27,12 @@ export const ApplicationViews = ({ token, setToken }) => {
             path="/edit-user/:techuserId"
             element={<EditUserForm token={token} setToken={setToken} />} />
 
+          <Route 
+            path="/edit-post/:postId"
+            element={<EditPostForm token={token} setToken={setToken} />} 
+          />
+
+
           <Route
             path="/postLists"
             element={<PostList token={token} setToken={setToken} />}   />
@@ -43,9 +49,7 @@ export const ApplicationViews = ({ token, setToken }) => {
             path="/create-post"
             element={<PostForm token={token} setToken={setToken} />}   />
 
-          <Route
-            path="/myPosts"
-            element={<MyPosts token={token} setToken={setToken} />}    />
+          
 
           <Route
             path="/skills"

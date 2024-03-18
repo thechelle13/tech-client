@@ -39,12 +39,10 @@ export const SkillList = ({ setToken, token }) => {
 
   
   return (
-    <div className="container mx-auto mt-8">
-      {/* <div className="flex items-center justify-center mb-4">
-        <img className="app-logo mr-4" src={steveImage} alt="Good job Steve" />
-        <h1 className="text-3xl font-semibold text-center">Skills</h1>
-        <img className="app-logo ml-4" src={steveImage} alt="Good job Steve" />
-      </div> */}
+    <div className="mx-auto mt-8 max-w-lg">
+      <div className="bg-blue-400 p-4 rounded-md mb-4">
+        <h1 className="text-4xl font-semibold text-center text-white">Skills</h1>
+      </div>
       <div className="flex items-center justify-center">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
@@ -56,21 +54,20 @@ export const SkillList = ({ setToken, token }) => {
       <div>
         {sortedSkills && sortedSkills.length ? (
           sortedSkills.map((skill) => (
-            <div className="bg-gray-100 rounded-md p-4 mb-4 flex items-center justify-between" key={skill.id}>
-              <div className="text-xl font-semibold">{skill.label}</div>
+            <div className="bg-gray-400 rounded-md p-4 mb-4 flex items-center justify-between" key={skill.id}>
+              <div className="text-xl font-semibold text-blue-600">{skill.label}</div>
               <div className="flex items-center space-x-4">
                 <button
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => navigate(`/edit-skill/${skill.id}`)}
-                  >
+                  className="text-blue-500 hover:text-blue-700"
+                  onClick={() => navigate(`/edit-skill/${skill.id}`)}
+                >
                   <PencilAltIcon className="h-5 w-5" />
-                  </button>
-                  <button
-                    className="text-red-500 hover:text-red-700"
-                    onClick={() => handleDelete(skill.id)}
-                  >
+                </button>
+                <button
+                  className="text-red-500 hover:text-red-700"
+                  onClick={() => handleDelete(skill.id)}
+                >
                   <TrashIcon className="h-5 w-5" />
-
                 </button>
               </div>
             </div>
@@ -81,7 +78,7 @@ export const SkillList = ({ setToken, token }) => {
       </div>
     </div>
   );
-
+  
 }
 
 
