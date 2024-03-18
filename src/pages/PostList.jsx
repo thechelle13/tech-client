@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllPosts } from "../services/postServices";
-
 
 export const PostList = ({ setToken, token }) => {
   const [posts, setPosts] = useState([]);
@@ -67,18 +66,14 @@ export const PostList = ({ setToken, token }) => {
   };
 
   // Filter posts based on search query
-  // Filter posts based on search query
   const filteredPosts = posts.filter((post) => {
     const lowerCaseSearchQuery = searchQuery.toLowerCase();
     const lowerCaseTitle = post.title.toLowerCase();
-    const lowerCaseContent = post.content.toLowerCase(); // Assuming there's a content field
+    const lowerCaseContent = post.content.toLowerCase();
 
-    // Check if the search query is present in the title, content, or other relevant fields
     return (
       lowerCaseTitle.includes(lowerCaseSearchQuery) ||
       lowerCaseContent.includes(lowerCaseSearchQuery) ||
-      // Include other fields as needed
-      // For example, you might want to include the author's username
       post.tech_user.user.username.toLowerCase().includes(lowerCaseSearchQuery)
     );
   });
@@ -88,18 +83,18 @@ export const PostList = ({ setToken, token }) => {
       <div className="container mx-auto mt-8">
         <div className="text-3xl text-blue-500 font-semibold mb-4 text-center">All Posts</div>
 
-        <div className="flex justify-between items-center mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div className="relative bg-blue-200 rounded-lg shadow-lg p-6 text-center">
-            <div className="text-xl font-bold text-white mb-4">Today's most</div>
+            <div className="text-2xl font-bold text-white mb-4">Today's most</div>
             <div className="text-xl font-bold mb-4">WANTED</div>
-            <div className="text-lg font-bold mb-4 text-white">SKILL :</div>
+            <div className="text-xl font-bold mb-4 text-white">SKILL :</div>
             <div className="text-xl font-bold mb-4">{mostWantedSkill}</div>
           </div>
 
-          <div className="relative bg-red-200 rounded-lg shadow-lg p-6 text-center">
-            <div className="text-xl font-bold text-white mb-4">Today's most</div>
+          <div className="relative bg-blue-200 rounded-lg shadow-lg p-6 text-center">
+            <div className="text-2xl font-bold text-white mb-4">Today's most</div>
             <div className="text-xl font-bold mb-4">WANTED</div>
-            <div className="text-lg font-bold mb-4 text-white">Area :</div>
+            <div className="text-xl font-bold mb-4 text-white">Area :</div>
             <div className="text-xl font-bold mb-4">{mostWantedArea}</div>
           </div>
         </div>

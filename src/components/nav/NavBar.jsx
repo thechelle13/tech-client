@@ -32,23 +32,23 @@ export const NavBar = ({ token, setToken }) => {
       </div>
 
       <div className="navbar-menu w-full" ref={navbar}>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           <div className="navbar-start flex"> 
             {token && (
               <>
-                <Link to="/" className="navbar-item text-blue-500 mr-4">
+                <Link to="/" className="navbar-item text-blue-500 mx-4">
                   <HomeIcon className="w-8 h-8 mr-2" />
                 </Link>
 
-                <Link to="/postLists" className="navbar-item text-blue-500 mr-4">
+                <Link to="/postLists" className="navbar-item text-blue-500 mx-4">
                   {/* <DocumentTextIcon className="w-6 h-6 mr-2" /> */}
                    Posts
                 </Link>
-                <Link to="/myPosts" className="navbar-item text-blue-500 mr-4">
-                  {/* <UserCircleIcon className="w-6 h-6 mr-2" /> */}
+                {/* <Link to="/myPosts" className="navbar-item text-blue-500 mx-4">
+                 
                    My Posts
-                </Link>
-                <Link to="/skills" className="navbar-item text-blue-500 mr-4">
+                </Link> */}
+                <Link to="/skills" className="navbar-item text-blue-500 mx-4">
                   {/* <CogIcon className="w-6 h-6 mr-2" />  */}
                   Skill Manager
                 </Link>
@@ -60,7 +60,7 @@ export const NavBar = ({ token, setToken }) => {
             <div className="buttons">
               {token ? (
                 <button
-                  className="button is-outlined text-blue-500 mr-4"
+                  className="button is-outlined text-blue-500 mx-4"
                   onClick={() => {
                     setToken("");
                     navigate("/login");
@@ -70,10 +70,10 @@ export const NavBar = ({ token, setToken }) => {
                 </button>
               ) : (
                 <>
-                  <Link to="/register" className="button is-link text-blue-500 mr-4">
+                  <Link to="/register" className="button is-link text-blue-500 mx-4">
                     Register
                   </Link>
-                  <Link to="/login" className="button is-outlined text-blue-500">
+                  <Link to="/login" className="button is-outlined text-blue-500 mx-4">
                     Login
                   </Link>
                 </>

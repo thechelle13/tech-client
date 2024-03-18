@@ -13,30 +13,3 @@
 
 /* Apply the fonts to specific elements */
 
-body {
-    font-family: 'Libre Baskerville', serif;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-  }
-  
-  /* Additional styles with Open Sans if needed */
-  /* For example, for navigation or accent text */
-  .some-class {
-    font-family: 'Open Sans', sans-serif;
-  }
-  
-button {
-    padding: 10px 12px;
-    font-weight: bold;
-    font-size: 12px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 1px 1px 3px black;
- }
- 
-button:hover {
-    transform: scale(1.1);
-    cursor: pointer;
- }
