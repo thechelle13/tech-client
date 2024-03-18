@@ -37,11 +37,11 @@ export const NavBar = ({ token, setToken }) => {
             {token && (
               <>
                 <Link to="/" className="navbar-item text-blue-500 mx-4">
-                  <HomeIcon className="w-8 h-8 mr-2" />
+                  <HomeIcon className="w-8 h-8 mr-2 -mt-1" />
                 </Link>
 
                 <Link to="/postLists" className="navbar-item text-blue-500 mx-4">
-                  {/* <DocumentTextIcon className="w-6 h-6 mr-2" /> */}
+                 
                    Posts
                 </Link>
                 {/* <Link to="/myPosts" className="navbar-item text-blue-500 mx-4">
@@ -49,7 +49,7 @@ export const NavBar = ({ token, setToken }) => {
                    My Posts
                 </Link> */}
                 <Link to="/skills" className="navbar-item text-blue-500 mx-4">
-                  {/* <CogIcon className="w-6 h-6 mr-2" />  */}
+                
                   Skill Manager
                 </Link>
               </>

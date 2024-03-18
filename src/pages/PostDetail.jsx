@@ -120,18 +120,18 @@ const saveNewSkills = async (event) => {
 
   return (
     <>
-      <div className="card-item bg-gray-200 p-4 rounded-md">
+      <div className="my-8 bg-gray-400 p-6 rounded-lg shadow-lg max-w-md mx-auto">
         {post ? (
           <>
-            <div className="card-header mb-4" key={post.id}>
-              <div className="card-title text-xl font-bold">Title: {post.title}</div>
-              <div className="card-author">Author: {post.tech_user.user.username}</div>
+            <div className="mb-4" key={post.id}>
+              <div className="text-xl font-bold">Title: {post.title}</div>
+              <div >Author: {post.tech_user.user.username}</div>
             </div>
 
 
-            <div className="card-body mb-4" >Image:
+            <div className="mb-4" >Image:
             <img
-                className="post-image"
+                
                 src={post.image_url} 
                 alt="no photo available"
                 width="400px"
@@ -140,33 +140,44 @@ const saveNewSkills = async (event) => {
             </div>
 
 
-            <div className="card-body mb-4">Affliate: {post.affliate}</div>
-            <div className="card-body mb-4">Content: {post.content}</div>
-            <div className="card-body mb-4">Area: {post.area.label}</div>
-            <div className="card-footer">
-              <div className="card-skills">
-                <ul className="card-skill-header">Skills:  </ul>
-                <div className="skills">
+            <div className="mb-4">Affliate: {post.affliate}</div>
+            <div className="mb-4">Content: {post.content}</div>
+            <div className="mb-4">Area: {post.area.label}</div>
+            <div >
+            
+                <ul >Skills:  </ul>
+              
                   {post.skills.map((skill) => (
-                    <li className="card-skill" key={skill.id}>
+                    <li key={skill.id}>
                       {skill.label}
                     </li>
                   ))}
-                </div>
-              </div>
+               
+             
             </div>
           </>
         ) : (
           <p>No post found.</p>
         )}
-         <div>
+         <div className="button-div mt-4 flex space-x-4 items-center justify-center">
+         {post && post.is_owner && (
+                       
+                          <button
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700"
+                            onClick={() => navigate(`/edit-post/${postId}`)}
+                          >
+                            Edit
+                          </button>
+                         
+                      
+                      )}
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300" onClick={handleContact}>Contact</button>
         </div>
       </div>
       {post?.is_owner ? (
         <div className="flex items-center justify-center">
-          <div className="manage-skills-div">
-            <button className="manage-skills-button bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleManageSkills}>
+          <div >
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300" onClick={handleManageSkills}>
               Manage Skills
             </button>
           </div>
@@ -174,8 +185,8 @@ const saveNewSkills = async (event) => {
       ) : (
         ""
       )}
-      <dialog className="manage-skills" ref={manageSkills}>
-        <div className="skill-container">
+      <dialog ref={manageSkills} className="p-4 bg-blue-400 text-white rounded-md">
+       
           {skills
             ? skills.map((skill) => (
                 <div key={skill.id} className="mb-2">
@@ -189,13 +200,13 @@ const saveNewSkills = async (event) => {
                 </div>
               ))
             : "No skills found"}
-        </div>
+        
        
         <div className="btn-div mt-4">
-          <button className="save-skill-btn bg-blue-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={saveNewSkills}>
             Save Skill Selection
           </button>
-          <button className="close-skill-btn bg-gray-500 text-white px-4 py-2 rounded-md ml-2" onClick={handleCloseSkills}>
+          <button className="bg-gray-500 text-white px-4 py-2 rounded-md ml-2" onClick={handleCloseSkills}>
             Close
           </button>
         </div>

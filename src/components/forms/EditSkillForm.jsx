@@ -30,20 +30,20 @@ export const EditSkillForm = () => {
   };
 
   return (
-    <main className="form-parent">
-  <form className="form-and-header">
+    <main className="text-center my-8 bg-gray-400 p-6 rounded-lg shadow-lg max-w-md mx-auto">
+  <form >
     <div className="h1-div text-center">
       <h1 className="text-2xl font-bold">Edit Skills Form</h1>
     </div>
-    <div className="form-container">
-      <fieldset className="form-fieldset">
-        <div className="form-field mb-4">
-          <label htmlFor="label" className="block text-sm font-medium text-gray-600">
+    <div >
+      <fieldset >
+        <div className="mb-4">
+          <label htmlFor="skill" className="block text-sm font-medium text-gray-600">
             Edited Skill:
           </label>
           <input
             className="input-field mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            id="label"
+            id="skill"
             onChange={updateSkill}
             type="text"
             placeholder="New Skill Name"
@@ -52,11 +52,11 @@ export const EditSkillForm = () => {
           />
         </div>
       </fieldset>
-      <div className="button-div flex justify-center">
-        <button className="button bg-blue-500 text-white" onClick={handleEditSave}>
+      <div className="flex justify-center">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" onClick={handleEditSave}>
           Save Edit
         </button>
-        <button className="button bg-gray-500 text-white ml-2" onClick={() => navigate("/skills")}>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" onClick={() => navigate("/skills")}>
           Cancel
         </button>
       </div>

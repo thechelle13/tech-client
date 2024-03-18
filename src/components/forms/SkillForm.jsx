@@ -29,14 +29,14 @@ export const SkillForm = () => {
     let navigate = useNavigate();
 
     return (
-      <main className="form-parent">
+      <main className="text-center my-8 bg-gray-400 p-6 rounded-lg shadow-lg max-w-md mx-auto" >
         <form className="form-and-header p-4 bg-gray-100 rounded shadow-md">
           <div className="h1-div mb-4">
             <h1 className="text-2xl font-bold">New Skill Form</h1>
           </div>
-          <div className="form-container">
+          <div >
             <fieldset className="form-fieldset">
-              <div className="form-field">
+              <div >
                 <label className="block font-bold">New Skill:</label>
                 <input
                   className="input-field border p-2 w-full"
@@ -50,12 +50,12 @@ export const SkillForm = () => {
               </div>
             </fieldset>
           </div>
-          <div className="button-div mt-4">
-            <button className="button bg-blue-500 text-white" onClick={handleSave}>
+          <div className="button-div mt-4 flex items-center justify-center">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" onClick={handleSave}>
               Submit Skill
             </button>
             <button
-              className="button bg-gray-500 text-white ml-2"
+              className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700"
               onClick={() => navigate(-1)}
             >
               Cancel

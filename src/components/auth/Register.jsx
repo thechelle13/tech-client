@@ -41,7 +41,7 @@ export const Register = ({setToken}) => {
 
   return (
     <section className="flex justify-center">
-      <form className="column bg-white rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleRegister}>
+      <form className="column bg-blue-300 rounded-lg shadow-lg p-8 text-center w-96" onSubmit={handleRegister}>
         <h1 className="text-3xl font-bold mb-4">TechPower</h1>
         <p className="text-lg mb-4">Create an account</p>
 
@@ -98,14 +98,14 @@ export const Register = ({setToken}) => {
           </div>
         </div>
 
-        {/* <div className="field is-grouped justify-between mb-4"> */}
+      
         <div className="flex justify-between mb-4">
-          <div className="control">
-            <button className="button bg-blue-500 text-white hover:bg-blue-700" type="submit">Submit</button>
-          </div>
-          <div className="control">
-            <Link to="/login" className="button is-link is-light">Cancel</Link>
-          </div>
+        
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700" type="submit">Submit</button>
+          
+         
+            <Link to="/login" className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700">Cancel</Link>
+         
         </div>
       </form>
     </section>
