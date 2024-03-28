@@ -2,64 +2,69 @@
 
 **TechPower - Project README**
 
-Introduction:
+## Introduction
 
 Welcome to TechPower, a platform designed to connect employers with tech talent efficiently. This README provides an overview of the project, its purpose, development process, and key features.
 
-
-Purpose and Motivation:
+## Purpose and Motivation
 
 TechPower aims to simplify the process of finding and hiring tech talent by addressing fundamental employment questions. The platform allows users to register, create and manage posts for tech jobs, view a list of all posts, edit and delete their own posts, and more.
 
-
-How It Works:
+## How It Works
 
 TechPower operates as a web application with user authentication. Users can register, log in, create, edit, and delete posts. The system also includes features such as viewing all posts and logging out securely.
 
-
-How It Was Developed:
+## How It Was Developed
 
 The development process followed the outlined user stories and criteria. The project utilizes a Sqlite database with user-related data, including at least one many-to-many relationship. Wireframes were created to illustrate the layout of each view, and an Entity-Relationship Diagram (ERD) was designed to visualize the database structure.
 
+## Deployed Application
 
-How to Install and Run the Apps Used in Development:
+The deployed application is accessible at [https://tech-client-er3ag.ondigitalocean.app/](https://tech-client-er3ag.ondigitalocean.app/).
+
+To log in and test the application, you can use the following credentials:
+- **Username:** newuser
+- **Password:** newuser
+
+
+## How to Install and Run the Apps Used in Development
 
 **To install and run the application, follow these steps:**
 
-Clone the repository.
+1. Clone the repository.
 
-bash
-Copy code
-git clone <repository-url>
-Install dependencies.
+    ```bash
+    git clone <repository-url>
+    ```
 
-bash
-Copy code
-npm install
-Run the application.
+2. Install dependencies.
 
-bash
-Copy code
-npm start
-Access the application in your web browser at http://localhost:3000.
+    ```bash
+    npm install
+    ```
 
+3. Run the application.
+
+    ```bash
+    npm start
+    ```
+
+4. Access the application in your web browser at http://localhost:3000.
 
 Difficulties and Challenges Faced During Process:   
 
 During the development phase, I encountered various challenges, such as issues with user authentication, database design complexities, and handling forms effectively.  Additionally, accessing tech_user information became a challenge, especially for displaying information on the Home page. Editing a post was successful early but following the introduction of a new resource (area) after the production phase caused errors in edit of a Post until all addressed. 
 
-**Public Links:**
+## Public Links
 
-Wireframes -  https://miro.com/app/board/uXjVMq9Opck=/?share_link_id=483286055911
+- Wireframes: [https://miro.com/app/board/uXjVMq9Opck=/?share_link_id=483286055911](https://miro.com/app/board/uXjVMq9Opck=/?share_link_id=483286055911)
+- ERD: [https://dbdiagram.io/d/TechPower-MVP-656a0b0956d8064ca0360b0f](https://dbdiagram.io/d/TechPower-MVP-656a0b0956d8064ca0360b0f)
 
-ERD - https://dbdiagram.io/d/TechPower-MVP-656a0b0956d8064ca0360b0f
-
-Problem Solved:
+## Problem Solved
 
 TechPower solves the challenge of efficiently connecting employers with tech talent by providing a streamlined platform for creating, managing, and viewing tech job posts.
 
-Project MVP: Stories & Criteria:
-
+## Project MVP: Stories & Criteria
 
 Register:
 As a potential user, I can create an account in the system.
@@ -116,15 +121,6 @@ As a user, I want to log out of the system.
 Given an authenticated user in the Tech application
 When they select the Logout option
 Then they should be logged out and directed to the Log In page.
-Stretch Goals: Stories & Criteria
-
-Create a New Skill:
-As an author, I want to create a new Tag to better classify my posts.
-Given an author on the Skill list page
-When they select the Create Skill button
-Then they should be directed to a form to enter a new Skill name
-When the user enters a Skill name and clicks Save, a new Skill is saved to the database.
-
 
 
 
