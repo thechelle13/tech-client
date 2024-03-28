@@ -48,6 +48,7 @@ export const Home = ({ token, setToken }) => {
           <h2 className="text-xl font-semibold mb-2 text-blue-800">
             {techUser.user.first_name} {techUser.user.last_name}
           </h2>
+          <p className="text-blue-800 mb-2">{techUser.user.email}</p>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
             onClick={() => navigate(`/edit-user/${techUser.user.id}`)}
