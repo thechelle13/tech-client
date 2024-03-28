@@ -38,12 +38,12 @@ export const EditSkillForm = () => {
     <div >
       <fieldset >
         <div className="mb-4">
-          <label htmlFor="skill" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="label" className="block text-sm font-medium text-gray-600">
             Edited Skill:
           </label>
           <input
             className="input-field mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            id="skill"
+            id="label"
             onChange={updateSkill}
             type="text"
             placeholder="New Skill Name"
