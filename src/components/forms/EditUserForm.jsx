@@ -11,7 +11,7 @@ export const EditUserForm = () => {
       first_name: "",
       last_name: "",
       email: "",
-      username: "",
+     
     },
   });
 
@@ -41,7 +41,7 @@ export const EditUserForm = () => {
         first_name: techUser.user.first_name,
         last_name: techUser.user.last_name,
         email: techUser.user.email,
-        username: techUser.user.username,
+       
     };
     console.log("techuserId:", techuserId);
     console.log("updatedTechUser:", updatedTechUser);
